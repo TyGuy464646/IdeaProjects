@@ -2,10 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="213bab79-fb23-4dfe-a408-a0e9c8cedfb8" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/../Font Generator/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../Font Generator/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Game Engine/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../Game Engine/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Game Engine/out/artifacts/Game_Engine_jar/Game Engine.jar" beforeDir="false" afterPath="$PROJECT_DIR$/../Game Engine/out/artifacts/Game_Engine_jar/Game Engine.jar" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Particles/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../Particles/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../JavaFX Project/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../JavaFX Project/.idea/workspace.xml" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -18,10 +16,11 @@
     <session id="272611906">
       <usages-collector id="statistics.lifecycle.project">
         <counts>
-          <entry key="project.closed" value="3" />
+          <entry key="project.closed" value="4" />
           <entry key="project.open.time.0" value="2" />
+          <entry key="project.open.time.1" value="1" />
           <entry key="project.open.time.5" value="1" />
-          <entry key="project.opened" value="3" />
+          <entry key="project.opened" value="4" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
@@ -63,7 +62,7 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/Main.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="68">
+            <state relative-caret-position="60">
               <caret line="4" column="39" selection-start-line="4" selection-start-column="39" selection-end-line="4" selection-end-column="39" />
             </state>
           </provider>
@@ -94,7 +93,7 @@
       <select />
     </treeState>
   </component>
-  <component name="ProjectFrameBounds">
+  <component name="ProjectFrameBounds" extendedState="6">
     <option name="x" value="650" />
     <option name="y" value="69" />
     <option name="width" value="1280" />
@@ -106,6 +105,8 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope" />
+      <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -117,8 +118,6 @@
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
-      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -165,10 +164,11 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
+    <frame x="48" y="23" width="1280" height="777" extended-state="0" />
+    <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.4967462" visible="true" weight="0.16791044" />
-      <window_info id="Structure" order="1" sideWeight="0.5032538" side_tool="true" visible="true" weight="0.16791044" />
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.4948905" visible="true" weight="0.17043619" />
+      <window_info id="Structure" order="1" sideWeight="0.5051095" side_tool="true" visible="true" weight="0.17043619" />
       <window_info id="Designer" order="2" />
       <window_info id="Learn" order="3" weight="0.32956383" />
       <window_info id="UI Designer" order="4" />
@@ -198,7 +198,7 @@
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/src/Main.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="68">
+        <state relative-caret-position="60">
           <caret line="4" column="39" selection-start-line="4" selection-start-column="39" selection-end-line="4" selection-end-column="39" />
         </state>
       </provider>
