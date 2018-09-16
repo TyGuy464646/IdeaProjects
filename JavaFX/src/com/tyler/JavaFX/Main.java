@@ -1,8 +1,11 @@
-package com.tyler.javaFX;
+package com.tyler.JavaFX;
 
 public class Main {
 
     public static void main(String[] args) {
-	// write your code here
+
+
+
     }
+
 }
