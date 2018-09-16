@@ -2,12 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="331ff8d5-558f-4c48-99e3-1b3d31e52be9" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/../Font Generator/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../Font Generator/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Game Engine/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../Game Engine/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Game Engine/out/artifacts/Game_Engine_jar/Game Engine.jar" beforeDir="false" afterPath="$PROJECT_DIR$/../Game Engine/out/artifacts/Game_Engine_jar/Game Engine.jar" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../HelloWorld/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../HelloWorld/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../JavaFX Project/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../JavaFX Project/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Particles/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../Particles/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -60,9 +55,10 @@
     <session id="-292040933">
       <usages-collector id="statistics.lifecycle.project">
         <counts>
-          <entry key="project.closed" value="1" />
+          <entry key="project.closed" value="2" />
           <entry key="project.open.time.0" value="1" />
-          <entry key="project.opened" value="1" />
+          <entry key="project.open.time.6" value="1" />
+          <entry key="project.opened" value="2" />
         </counts>
       </usages-collector>
     </session>
@@ -119,8 +115,9 @@
       </list>
     </option>
   </component>
-  <component name="ProjectFrameBounds" extendedState="6">
-    <option name="y" value="23" />
+  <component name="ProjectFrameBounds">
+    <option name="x" value="691" />
+    <option name="y" value="44" />
     <option name="width" value="1280" />
     <option name="height" value="777" />
   </component>
@@ -130,6 +127,8 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="PackagesPane" />
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -199,13 +198,11 @@
           <select />
         </subPane>
       </pane>
-      <pane id="PackagesPane" />
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="SearchEverywhereHistoryKey" value="setLightBlock&#9;PSI&#9;JAVA://com.tyler.engine.gfx.Image#setLightBlock&#10;drawLight&#9;PSI&#9;JAVA://com.tyler.engine.Renderer#drawLight&#10;render&#9;PSI&#9;JAVA://com.tyler.engine.AbstractGame#render&#10;drawIm&#9;PSI&#9;JAVA://com.tyler.engine.Renderer#drawImage&#10;setLightMap&#9;PSI&#9;JAVA://com.tyler.engine.Renderer#setLightMap&#10;setPixel&#9;PSI&#9;JAVA://com.tyler.engine.gfx.Image#setPixels&#10;update&#9;PSI&#9;JAVA://com.tyler.engine.AbstractGame#update&#10;rend&#9;PSI&#9;JAVA://com.tyler.engine.Renderer" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../HelloWorld" />
     <property name="project.structure.last.edited" value="Artifacts" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
@@ -260,9 +257,9 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
+    <frame x="691" y="44" width="1280" height="777" extended-state="0" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.49908593" visible="true" weight="0.23187633" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.49908593" visible="true" weight="0.2352459" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Designer" order="2" />
       <window_info id="Learn" order="3" />
