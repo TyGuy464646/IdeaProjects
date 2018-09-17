@@ -88,6 +88,7 @@ public class Enemy extends GameObject {
 
         g.setColor(Color.GREEN);
         g2d.draw(getBoundsBig());
+        g2d.draw(getBounds());
     }
 
     public Rectangle getBounds() {

@@ -11,6 +11,8 @@ public class Bullet extends GameObject {
 
     // VARIABLES
     private Handler handler;
+    private float scale;
+    private int shotSpeed = 10;
 
 
     // CONSTRUCTOR
@@ -18,8 +20,11 @@ public class Bullet extends GameObject {
         super(x, y, id, spriteSheet);
         this.handler = handler;
 
-        velX = (mouseX - x) / 10;
-        velY = (mouseY - y) / 10;
+        scale = (float) ((shotSpeed) / (Math.sqrt(((mouseX - x) * (mouseX - x)) + ((mouseY - y) * (mouseY - y)))));
+
+        velX = (mouseX - x) * scale;
+        velY = (mouseY - y) * scale;
+
     }
 
 
