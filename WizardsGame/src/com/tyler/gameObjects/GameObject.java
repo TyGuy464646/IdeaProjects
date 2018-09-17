@@ -7,12 +7,14 @@ public abstract class GameObject {
     // VARIABLES
     protected int x, y;
     protected float velX = 0, velY = 0;
+    protected ID id;
 
 
     // CONSTRUCTOR
-    public GameObject(int x, int y) {
+    public GameObject(int x, int y, ID id) {
         this.x = x;
         this.y = y;
+        this.id = id;
     }
 
 
@@ -50,5 +52,12 @@ public abstract class GameObject {
     }
     public void setVelY(float velY) {
         this.velY = velY;
+    }
+
+    public ID getId() {
+        return id;
+    }
+    public void setId(ID id) {
+        this.id = id;
     }
 }
