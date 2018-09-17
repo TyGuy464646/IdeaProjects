@@ -1,7 +1,9 @@
 package com.tyler.main;
 
 import com.tyler.gameObjects.Handler;
-import com.tyler.gameObjects.objects.Box;
+import com.tyler.gameObjects.ID;
+import com.tyler.gameObjects.objects.Wizard;
+import com.tyler.input.keyInput.KeyInput;
 
 import java.awt.*;
 import java.awt.image.BufferStrategy;
@@ -26,6 +28,9 @@ public class Main extends Canvas implements Runnable {
 
         // initialize classes
         handler = new Handler();
+        this.addKeyListener(new KeyInput(handler));
+
+        handler.addObject(new Wizard(100, 100, ID.Player, handler));
     }
 
 
