@@ -6,6 +6,7 @@ import com.tyler.gameObjects.objects.Block;
 import com.tyler.gameObjects.objects.Wizard;
 import com.tyler.image.BufferedImageLoader;
 import com.tyler.input.keyInput.KeyInput;
+import com.tyler.input.mouseInput.MouseInput;
 
 import java.awt.*;
 import java.awt.image.BufferStrategy;
@@ -36,6 +37,8 @@ public class Main extends Canvas implements Runnable {
         camera = new Camera(0, 0, this);
 
         this.addKeyListener(new KeyInput(handler));
+        this.addMouseListener(new MouseInput(handler, camera));
+
         BufferedImageLoader loader = new BufferedImageLoader();
         level = loader.loadImage("/levels/level1.png");
 
