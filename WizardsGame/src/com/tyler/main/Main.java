@@ -21,6 +21,7 @@ public class Main extends Canvas implements Runnable {
     private boolean isRunning = false;
     private Thread thread;
     private Handler handler;
+    private Camera camera;
 
     private BufferedImage level = null;
 
@@ -32,6 +33,8 @@ public class Main extends Canvas implements Runnable {
 
         // initialize classes
         handler = new Handler();
+        camera = new Camera(0, 0, this);
+
         this.addKeyListener(new KeyInput(handler));
         BufferedImageLoader loader = new BufferedImageLoader();
         level = loader.loadImage("/levels/level1.png");
@@ -89,6 +92,13 @@ public class Main extends Canvas implements Runnable {
     }
 
     public void tick() {
+        // Camera lock onto player
+        for(int i = 0; i < handler.object.size(); i++) {
+            if(handler.object.get(i).getId() == ID.Player) {
+                camera.tick(handler.object.get(i));
+            }
+        }
+
         handler.tick();
     }
 
@@ -102,14 +112,21 @@ public class Main extends Canvas implements Runnable {
         }
 
         Graphics g = bs.getDrawGraphics();
+        Graphics2D g2d = (Graphics2D) g;
         ///////////////////////////////////////////////////////// START RENDER
 
         // background
         g.setColor(Color.RED);
         g.fillRect(0, 0, width, height);
 
+        g2d.translate(-camera.getX(), -camera.getY());
+        //////////////////////////////////////////////////// translate camera start
+
         // class renderers
         handler.render(g);
+
+        //////////////////////////////////////////////////// translate camera stop
+        g2d.translate(camera.getX(), camera.getY());
 
         ///////////////////////////////////////////////////////// END   RENDER
         g.dispose();
@@ -142,4 +159,26 @@ public class Main extends Canvas implements Runnable {
 	    new Main();
     }
 
+
+    // GETTERS AND SETTERS
+    public int getWidth() {
+        return width;
+    }
+    public void setWidth(int width) {
+        this.width = width;
+    }
+
+    public int getHeight() {
+        return height;
+    }
+    public void setHeight(int height) {
+        this.height = height;
+    }
+
+    public String getTitle() {
+        return title;
+    }
+    public void setTitle(String title) {
+        this.title = title;
+    }
 }
