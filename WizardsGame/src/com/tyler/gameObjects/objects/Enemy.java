@@ -82,13 +82,6 @@ public class Enemy extends GameObject {
         } else {
             animation.drawAnimation(g, x, y, 0);
         }
-
-        // DRAW BOUNDS
-        Graphics2D g2d = (Graphics2D) g;
-
-        g.setColor(Color.GREEN);
-        g2d.draw(getBoundsBig());
-        g2d.draw(getBounds());
     }
 
     public Rectangle getBounds() {
