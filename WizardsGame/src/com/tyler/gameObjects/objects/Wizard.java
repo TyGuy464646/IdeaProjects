@@ -38,7 +38,7 @@ public class Wizard extends GameObject {
     }
 
     public void render(Graphics g) {
-        g.setColor(Color.BLACK);
+        g.setColor(Color.BLUE);
         g.fillRect(x, y, 32, 48);
     }
 
