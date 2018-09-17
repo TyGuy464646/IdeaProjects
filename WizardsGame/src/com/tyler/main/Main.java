@@ -28,9 +28,10 @@ public class Main extends Canvas implements Runnable {
     private Camera camera;
     private SpriteSheet spriteSheet;
 
-    BufferedImage floor = null;
+    BufferedImage floor;
 
     public int ammo = 100;
+    public int hp = 100;
 
 
     // CONSTRUCTOR
@@ -146,6 +147,22 @@ public class Main extends Canvas implements Runnable {
 
         //////////////////////////////////////////////////// translate camera stop
         g2d.translate(camera.getX(), camera.getY());
+
+        // HP
+        g.setColor(Color.GRAY);
+        g.fillRect(5, 5, 200, 32);
+        g.setColor(Color.GREEN);
+        g.fillRect(5, 5, hp*2, 32);
+        g.setColor(Color.BLACK);
+        g.drawRect(5, 5, 200, 32);
+        g.setColor(Color.BLACK);
+        g.setFont(new Font(null, Font.BOLD, 14));
+        g.drawString("HP: " + hp, 70, 25);
+
+        // AMMO
+        g.setColor(Color.WHITE);
+        g.drawString("Ammo: " + ammo, 5, 50);
+
 
         ///////////////////////////////////////////////////////// END   RENDER
         g.dispose();
