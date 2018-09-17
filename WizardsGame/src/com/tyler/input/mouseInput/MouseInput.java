@@ -4,6 +4,7 @@ import com.tyler.gameObjects.GameObject;
 import com.tyler.gameObjects.Handler;
 import com.tyler.gameObjects.ID;
 import com.tyler.gameObjects.objects.Bullet;
+import com.tyler.image.SpriteSheet;
 import com.tyler.main.Camera;
 import com.tyler.main.Main;
 
@@ -16,13 +17,15 @@ public class MouseInput extends MouseAdapter {
     private Handler handler;
     private Camera camera;
     private Main game;
+    private SpriteSheet spriteSheet;
 
 
     // CONSTRUCTOR
-    public MouseInput(Handler handler, Camera camera, Main game) {
+    public MouseInput(Handler handler, Camera camera, Main game, SpriteSheet spriteSheet) {
         this.handler = handler;
         this.camera = camera;
         this.game = game;
+        this.spriteSheet = spriteSheet;
     }
 
 
@@ -35,14 +38,10 @@ public class MouseInput extends MouseAdapter {
             GameObject tempObject = handler.object.get(i);
 
             if(tempObject.getId() == ID.Player && game.ammo >= 1) {
-                handler.addObject(new Bullet(tempObject.getX()+ 16, tempObject.getY() + 24, ID.Bullet, handler, mouseX, mouseY));
+                handler.addObject(new Bullet(tempObject.getX()+ 16, tempObject.getY() + 24, ID.Bullet, handler, mouseX, mouseY, spriteSheet));
                 game.ammo--;
             }
         }
-    }
-
-    public void mouseReleased(MouseEvent e) {
-
     }
 
 }

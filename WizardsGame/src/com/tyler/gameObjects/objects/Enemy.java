@@ -3,8 +3,11 @@ package com.tyler.gameObjects.objects;
 import com.tyler.gameObjects.GameObject;
 import com.tyler.gameObjects.Handler;
 import com.tyler.gameObjects.ID;
+import com.tyler.image.Animation;
+import com.tyler.image.SpriteSheet;
 
 import java.awt.*;
+import java.awt.image.BufferedImage;
 import java.util.Random;
 
 public class Enemy extends GameObject {
@@ -12,14 +15,24 @@ public class Enemy extends GameObject {
     // VARIABLES
     private Handler handler;
     private Random r;
+    private Animation animation;
+
     private int hp = 100;
+
+    private BufferedImage[] enemy_image = new BufferedImage[3];
 
 
     // CONSTRUCTOR
-    public Enemy(int x, int y, ID id, Handler handler) {
-        super(x, y, id);
+    public Enemy(int x, int y, ID id, Handler handler, SpriteSheet spriteSheet) {
+        super(x, y, id, spriteSheet);
         this.handler = handler;
         r = new Random();
+
+        enemy_image[0] = spriteSheet.grabImage(4, 1, 32, 32);
+        enemy_image[1] = spriteSheet.grabImage(5, 1, 32, 32);
+        enemy_image[2] = spriteSheet.grabImage(6, 1, 32, 32);
+
+        animation = new Animation(3, enemy_image);
     }
 
 
@@ -57,11 +70,16 @@ public class Enemy extends GameObject {
 
         if(hp <= 0)
             handler.removeObject(this);
+
+        animation.runAnimation();
     }
 
     public void render(Graphics g) {
-        g.setColor(Color.YELLOW);
-        g.fillRect(x, y, 32, 32);
+        if(velX == 0 && velY == 0) {
+            g.drawImage(enemy_image[0], x, y, null);
+        } else {
+            animation.drawAnimation(g, x, y, 0);
+        }
 
         // DRAW BOUNDS
         Graphics2D g2d = (Graphics2D) g;

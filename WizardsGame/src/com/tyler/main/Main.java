@@ -7,6 +7,7 @@ import com.tyler.gameObjects.objects.Crate;
 import com.tyler.gameObjects.objects.Enemy;
 import com.tyler.gameObjects.objects.Wizard;
 import com.tyler.image.BufferedImageLoader;
+import com.tyler.image.SpriteSheet;
 import com.tyler.input.keyInput.KeyInput;
 import com.tyler.input.mouseInput.MouseInput;
 
@@ -25,6 +26,9 @@ public class Main extends Canvas implements Runnable {
     private Thread thread;
     private Handler handler;
     private Camera camera;
+    private SpriteSheet spriteSheet;
+
+    BufferedImage floor = null;
 
     public int ammo = 100;
 
@@ -38,13 +42,20 @@ public class Main extends Canvas implements Runnable {
         handler = new Handler();
         camera = new Camera(0, 0, this);
 
-        this.addKeyListener(new KeyInput(handler));
-        this.addMouseListener(new MouseInput(handler, camera, this));
 
         BufferedImageLoader loader = new BufferedImageLoader();
         BufferedImage level = loader.loadImage("/levels/level1.png");
+        BufferedImage sprite_sheet = loader.loadImage("/sprites/sprite_sheet.png");
+
+        spriteSheet = new SpriteSheet(sprite_sheet);
+
+        floor = spriteSheet.grabImage(4, 2, 32, 32);
+
+        this.addKeyListener(new KeyInput(handler));
+        this.addMouseListener(new MouseInput(handler, camera, this, spriteSheet));
 
         loadLevel(level);
+
     }
 
 
@@ -120,14 +131,17 @@ public class Main extends Canvas implements Runnable {
         Graphics2D g2d = (Graphics2D) g;
         ///////////////////////////////////////////////////////// START RENDER
 
-        // background
-        g.setColor(Color.RED);
-        g.fillRect(0, 0, width, height);
-
         g2d.translate(-camera.getX(), -camera.getY());
         //////////////////////////////////////////////////// translate camera start
 
-        // class render-ers
+        // Background
+        for(int xx = 0; xx < 30 * 72; xx += 32) {
+            for(int yy = 0; yy < 30 * 72; yy += 32) {
+                g.drawImage(floor, xx, yy, null);
+            }
+        }
+
+        // class renderers
         handler.render(g);
 
         //////////////////////////////////////////////////// translate camera stop
@@ -151,13 +165,13 @@ public class Main extends Canvas implements Runnable {
                 int blue = pixel & 0xff;
 
                 if(red == 255)
-                    handler.addObject(new Block(xx * 32, yy * 32, ID.Block));
+                    handler.addObject(new Block(xx * 32, yy * 32, ID.Block, spriteSheet));
                 if(blue == 255 && green == 0)
-                    handler.addObject(new Wizard(xx * 32, yy * 32, ID.Player, handler, this));
+                    handler.addObject(new Wizard(xx * 32, yy * 32, ID.Player, handler, this, spriteSheet));
                 if(green == 255 && blue == 0)
-                    handler.addObject(new Enemy(xx * 32, yy * 32, ID.Enemy, handler));
+                    handler.addObject(new Enemy(xx * 32, yy * 32, ID.Enemy, handler, spriteSheet));
                 if(green == 255 && blue == 255)
-                    handler.addObject(new Crate(xx * 32, yy * 32, ID.Crate));
+                    handler.addObject(new Crate(xx * 32, yy * 32, ID.Crate, spriteSheet));
             }
         }
     }

@@ -2,14 +2,22 @@ package com.tyler.gameObjects.objects;
 
 import com.tyler.gameObjects.GameObject;
 import com.tyler.gameObjects.ID;
+import com.tyler.image.SpriteSheet;
 
 import java.awt.*;
+import java.awt.image.BufferedImage;
 
 public class Block extends GameObject {
 
+    // VARIABLES
+    private BufferedImage block_image = null;
+
+
     // CONSTRUCTOR
-    public Block(int x, int y, ID id) {
-        super(x, y, id);
+    public Block(int x, int y, ID id, SpriteSheet spriteSheet) {
+        super(x, y, id, spriteSheet);
+
+        block_image = spriteSheet.grabImage(5, 2, 32, 32);
     }
 
 
@@ -19,14 +27,7 @@ public class Block extends GameObject {
     }
 
     public void render(Graphics g) {
-        g.setColor(Color.BLACK);
-        g.fillRect(x, y, 32, 32);
-
-        // DRAW BOUNDS
-        Graphics2D g2d = (Graphics2D) g;
-
-        g.setColor(Color.GREEN);
-        g2d.draw(getBounds());
+        g.drawImage(block_image, x, y, null);
     }
 
     public Rectangle getBounds() {

@@ -3,6 +3,7 @@ package com.tyler.gameObjects.objects;
 import com.tyler.gameObjects.GameObject;
 import com.tyler.gameObjects.Handler;
 import com.tyler.gameObjects.ID;
+import com.tyler.image.SpriteSheet;
 
 import java.awt.*;
 
@@ -13,8 +14,8 @@ public class Bullet extends GameObject {
 
 
     // CONSTRUCTOR
-    public Bullet(int x, int y, ID id, Handler handler, int mouseX, int mouseY) {
-        super(x, y, id);
+    public Bullet(int x, int y, ID id, Handler handler, int mouseX, int mouseY, SpriteSheet spriteSheet) {
+        super(x, y, id, spriteSheet);
         this.handler = handler;
 
         velX = (mouseX - x) / 10;

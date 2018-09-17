@@ -1,5 +1,7 @@
 package com.tyler.gameObjects;
 
+import com.tyler.image.SpriteSheet;
+
 import java.awt.*;
 
 public abstract class GameObject {
@@ -7,14 +9,16 @@ public abstract class GameObject {
     // VARIABLES
     protected int x, y;
     protected float velX = 0, velY = 0;
-    private ID id;
+    protected ID id;
+    protected SpriteSheet spriteSheet;
 
 
     // CONSTRUCTOR
-    public GameObject(int x, int y, ID id) {
+    public GameObject(int x, int y, ID id, SpriteSheet spriteSheet) {
         this.x = x;
         this.y = y;
         this.id = id;
+        this.spriteSheet = spriteSheet;
     }
 
 

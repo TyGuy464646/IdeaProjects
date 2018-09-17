@@ -3,22 +3,34 @@ package com.tyler.gameObjects.objects;
 import com.tyler.gameObjects.GameObject;
 import com.tyler.gameObjects.Handler;
 import com.tyler.gameObjects.ID;
+import com.tyler.image.Animation;
+import com.tyler.image.SpriteSheet;
 import com.tyler.main.Main;
 
 import java.awt.*;
+import java.awt.image.BufferedImage;
 
 public class Wizard extends GameObject {
 
     // VARIABLES
     private Handler handler;
     private Main game;
+    private Animation animation;
+
+    private BufferedImage[] wizard_image = new BufferedImage[3];
 
 
     // CONSTRUCTOR
-    public Wizard(int x, int y, ID id, Handler handler, Main game) {
-        super(x, y, id);
+    public Wizard(int x, int y, ID id, Handler handler, Main game, SpriteSheet spriteSheet) {
+        super(x, y, id, spriteSheet);
         this.handler = handler;
         this.game = game;
+
+        wizard_image[0] = spriteSheet.grabImage(1, 1, 32, 48);
+        wizard_image[1] = spriteSheet.grabImage(2, 1, 32, 48);
+        wizard_image[2] = spriteSheet.grabImage(3, 1, 32, 48);
+
+        animation = new Animation(3, wizard_image);
     }
 
 
@@ -41,17 +53,16 @@ public class Wizard extends GameObject {
 
         if(handler.isLeft()) velX = -5;
         else if(!handler.isRight()) velX = 0;
+
+        animation.runAnimation();
     }
 
     public void render(Graphics g) {
-        g.setColor(Color.BLUE);
-        g.fillRect(x, y, 32, 48);
-
-        // DRAW BOUNDS
-        Graphics2D g2d = (Graphics2D) g;
-
-        g.setColor(Color.GREEN);
-        g2d.draw(getBounds());
+        if(velX == 0 && velY == 0) {
+            g.drawImage(wizard_image[0], x, y, null);
+        } else {
+            animation.drawAnimation(g, x, y, 0);
+        }
     }
 
     public Rectangle getBounds() {
