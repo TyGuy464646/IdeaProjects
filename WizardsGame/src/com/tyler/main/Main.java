@@ -1,19 +1,31 @@
 package com.tyler.main;
 
+import com.tyler.gameObjects.Handler;
+import com.tyler.gameObjects.objects.Box;
+
 import java.awt.*;
 import java.awt.image.BufferStrategy;
 
 public class Main extends Canvas implements Runnable {
 
     // VARIABLES
+    private int     width = 1000,
+                    height = 563;
+    private String  title = "Wizard Game";
+
     private boolean isRunning = false;
     private Thread thread;
+
+    private Handler handler;
 
 
     // CONSTRUCTOR
     public Main() {
-        new Window(1000, 563, "Wizard Game", this);
+        new Window(width, height, title, this);
         start();
+
+        // initialize classes
+        handler = new Handler();
     }
 
 
@@ -66,7 +78,7 @@ public class Main extends Canvas implements Runnable {
     }
 
     public void tick() {
-
+        handler.tick();
     }
 
     public void render() {
@@ -81,7 +93,12 @@ public class Main extends Canvas implements Runnable {
         Graphics g = bs.getDrawGraphics();
         ///////////////////////////////////////////////////////// START RENDER
 
+        // background
+        g.setColor(Color.CYAN);
+        g.fillRect(0, 0, width, height);
 
+        // class renderers
+        handler.render(g);
 
         ///////////////////////////////////////////////////////// END   RENDER
         g.dispose();
