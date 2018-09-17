@@ -10,7 +10,7 @@ import java.awt.event.KeyEvent;
 public class KeyInput extends KeyAdapter {
 
     // VARIABLES
-    Handler handler;
+    private Handler handler;
 
 
     // CONSTRUCTOR

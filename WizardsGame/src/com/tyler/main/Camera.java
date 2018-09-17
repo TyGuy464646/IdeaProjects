@@ -6,7 +6,7 @@ public class Camera {
 
     // VARIABLES
     private float x, y;
-    Main game;
+    private Main game;
 
 
     // CONSTRUCTOR

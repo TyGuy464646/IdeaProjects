@@ -7,7 +7,7 @@ public abstract class GameObject {
     // VARIABLES
     protected int x, y;
     protected float velX = 0, velY = 0;
-    protected ID id;
+    private ID id;
 
 
     // CONSTRUCTOR

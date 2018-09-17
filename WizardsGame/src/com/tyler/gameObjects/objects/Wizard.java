@@ -9,7 +9,7 @@ import java.awt.*;
 public class Wizard extends GameObject {
 
     // VARIABLES
-    Handler handler;
+    private Handler handler;
 
 
     // CONSTRUCTOR

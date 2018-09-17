@@ -9,7 +9,7 @@ import java.awt.*;
 public class Bullet extends GameObject {
 
     // VARIABLES
-    Handler handler;
+    private Handler handler;
 
 
     // CONSTRUCTOR

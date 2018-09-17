@@ -10,16 +10,16 @@ import java.util.Random;
 public class Enemy extends GameObject {
 
     // VARIABLES
-    Handler handler;
-    Random r = new Random();
-    int choose = 0;
-    int hp = 100;
+    private Handler handler;
+    private Random r;
+    private int hp = 100;
 
 
     // CONSTRUCTOR
     public Enemy(int x, int y, ID id, Handler handler) {
         super(x, y, id);
         this.handler = handler;
+        r = new Random();
     }
 
 
@@ -28,7 +28,7 @@ public class Enemy extends GameObject {
         x += velX;
         y += velY;
 
-        choose = r.nextInt(10);
+        int choose = r.nextInt(10);
 
         // Check bounds if hitting wall
         for(int i = 0; i < handler.object.size(); i++) {
@@ -74,7 +74,7 @@ public class Enemy extends GameObject {
         return new Rectangle(x, y, 32, 32);
     }
 
-    public Rectangle getBoundsBig() {
+    private Rectangle getBoundsBig() {
         return new Rectangle(x - 16, y - 16, 64, 64);
     }
 

@@ -25,11 +25,9 @@ public class Main extends Canvas implements Runnable {
     private Handler handler;
     private Camera camera;
 
-    private BufferedImage level = null;
-
 
     // CONSTRUCTOR
-    public Main() {
+    private Main() {
         new Window(width, height, title, this);
         start();
 
@@ -41,7 +39,7 @@ public class Main extends Canvas implements Runnable {
         this.addMouseListener(new MouseInput(handler, camera));
 
         BufferedImageLoader loader = new BufferedImageLoader();
-        level = loader.loadImage("/levels/level1.png");
+        BufferedImage level = loader.loadImage("/levels/level1.png");
 
         loadLevel(level);
     }
@@ -95,7 +93,7 @@ public class Main extends Canvas implements Runnable {
         stop();
     }
 
-    public void tick() {
+    private void tick() {
         // Camera lock onto player
         for(int i = 0; i < handler.object.size(); i++) {
             if(handler.object.get(i).getId() == ID.Player) {
@@ -106,7 +104,7 @@ public class Main extends Canvas implements Runnable {
         handler.tick();
     }
 
-    public void render() {
+    private void render() {
         BufferStrategy bs = this.getBufferStrategy();
 
         // If Buffer Strategy is null, create 3 buffers
@@ -126,7 +124,7 @@ public class Main extends Canvas implements Runnable {
         g2d.translate(-camera.getX(), -camera.getY());
         //////////////////////////////////////////////////// translate camera start
 
-        // class renderers
+        // class render-ers
         handler.render(g);
 
         //////////////////////////////////////////////////// translate camera stop
