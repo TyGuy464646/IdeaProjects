@@ -131,6 +131,7 @@ public class Main extends Canvas implements Runnable {
         Graphics g = bs.getDrawGraphics();
         Graphics2D g2d = (Graphics2D) g;
         ///////////////////////////////////////////////////////// START RENDER
+        // TODO: Game State Manager
 
         g2d.translate(-camera.getX(), -camera.getY());
         //////////////////////////////////////////////////// translate camera start

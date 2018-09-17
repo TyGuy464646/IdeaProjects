@@ -41,9 +41,11 @@ public class Enemy extends GameObject {
         x += velX;
         y += velY;
 
+        // TODO: Better Random Movement
         int choose = r.nextInt(10);
 
         // Check bounds if hitting wall
+        // TODO: Better Collision
         for(int i = 0; i < handler.object.size(); i++) {
             GameObject tempObject = handler.object.get(i);
 

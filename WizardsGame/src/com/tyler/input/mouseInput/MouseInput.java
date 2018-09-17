@@ -31,6 +31,7 @@ public class MouseInput extends MouseAdapter {
 
     // IMPLEMENTED METHODS
     public void mousePressed(MouseEvent e) {
+        // TODO: Better Bullet Projectile System (Doesn't rely on how far away mouse is)
         int mouseX = (int) (e.getX() + camera.getX());
         int mouseY = (int) (e.getY() + camera.getY());
 
