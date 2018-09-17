@@ -43,6 +43,12 @@ public class Wizard extends GameObject {
     public void render(Graphics g) {
         g.setColor(Color.BLUE);
         g.fillRect(x, y, 32, 48);
+
+        // DRAW BOUNDS
+        Graphics2D g2d = (Graphics2D) g;
+
+        g.setColor(Color.GREEN);
+        g2d.draw(getBounds());
     }
 
     public Rectangle getBounds() {

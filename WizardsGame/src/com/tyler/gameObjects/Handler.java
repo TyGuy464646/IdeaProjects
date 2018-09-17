@@ -1,12 +1,13 @@
 package com.tyler.gameObjects;
 
 import java.awt.*;
+import java.util.ArrayList;
 import java.util.LinkedList;
 
 public class Handler {
 
     // VARIABLES
-    public LinkedList<GameObject> object = new LinkedList<GameObject>(); // Array of objects
+    public ArrayList<GameObject> object = new ArrayList<GameObject>(); // Array of objects
 
     private boolean up = false,
                     down = false,

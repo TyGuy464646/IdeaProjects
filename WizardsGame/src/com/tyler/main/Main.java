@@ -3,6 +3,7 @@ package com.tyler.main;
 import com.tyler.gameObjects.Handler;
 import com.tyler.gameObjects.ID;
 import com.tyler.gameObjects.objects.Block;
+import com.tyler.gameObjects.objects.Enemy;
 import com.tyler.gameObjects.objects.Wizard;
 import com.tyler.image.BufferedImageLoader;
 import com.tyler.input.keyInput.KeyInput;
@@ -15,9 +16,9 @@ import java.awt.image.BufferedImage;
 public class Main extends Canvas implements Runnable {
 
     // VARIABLES
-    private int     width = 1000,
-                    height = 563;
-    private String  title = "Wizard Game";
+    private int width = 1000,
+            height = 563;
+    private String title = "Wizard Game";
 
     private boolean isRunning = false;
     private Thread thread;
@@ -59,7 +60,7 @@ public class Main extends Canvas implements Runnable {
 
         try {
             thread.join();
-        } catch (InterruptedException e) {
+        } catch(InterruptedException e) {
             e.printStackTrace();
         }
     }
@@ -109,7 +110,7 @@ public class Main extends Canvas implements Runnable {
         BufferStrategy bs = this.getBufferStrategy();
 
         // If Buffer Strategy is null, create 3 buffers
-        if(bs==null) {
+        if(bs == null) {
             this.createBufferStrategy(3);
             return;
         }
@@ -144,14 +145,16 @@ public class Main extends Canvas implements Runnable {
         for(int yy = 0; yy < h; yy++) {
             for(int xx = 0; xx < w; xx++) {
                 int pixel = image.getRGB(xx, yy);
-                int red     =      (pixel >> 16) & 0xff;
-                int green   =      (pixel >> 8) & 0xff;
-                int blue    =      pixel & 0xff;
+                int red = (pixel >> 16) & 0xff;
+                int green = (pixel >> 8) & 0xff;
+                int blue = pixel & 0xff;
 
                 if(red == 255)
-                    handler.addObject(new Block(xx*32, yy*32, ID.Block));
+                    handler.addObject(new Block(xx * 32, yy * 32, ID.Block));
                 if(blue == 255)
-                    handler.addObject(new Wizard(xx*32, yy*32, ID.Player, handler));
+                    handler.addObject(new Wizard(xx * 32, yy * 32, ID.Player, handler));
+                if(green == 255)
+                    handler.addObject(new Enemy(xx * 32, yy * 32, ID.Enemy, handler));
             }
         }
     }
@@ -159,7 +162,7 @@ public class Main extends Canvas implements Runnable {
 
     // MAIN METHOD
     public static void main(String[] args) {
-	    new Main();
+        new Main();
     }
 
 
@@ -167,6 +170,7 @@ public class Main extends Canvas implements Runnable {
     public int getWidth() {
         return width;
     }
+
     public void setWidth(int width) {
         this.width = width;
     }
@@ -174,6 +178,7 @@ public class Main extends Canvas implements Runnable {
     public int getHeight() {
         return height;
     }
+
     public void setHeight(int height) {
         this.height = height;
     }
@@ -181,6 +186,7 @@ public class Main extends Canvas implements Runnable {
     public String getTitle() {
         return title;
     }
+
     public void setTitle(String title) {
         this.title = title;
     }

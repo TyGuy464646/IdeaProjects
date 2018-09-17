@@ -21,6 +21,12 @@ public class Block extends GameObject {
     public void render(Graphics g) {
         g.setColor(Color.BLACK);
         g.fillRect(x, y, 32, 32);
+
+        // DRAW BOUNDS
+        Graphics2D g2d = (Graphics2D) g;
+
+        g.setColor(Color.GREEN);
+        g2d.draw(getBounds());
     }
 
     public Rectangle getBounds() {
