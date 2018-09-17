@@ -3,6 +3,7 @@ package com.tyler.gameObjects.objects;
 import com.tyler.gameObjects.GameObject;
 import com.tyler.gameObjects.Handler;
 import com.tyler.gameObjects.ID;
+import com.tyler.main.Main;
 
 import java.awt.*;
 
@@ -10,12 +11,14 @@ public class Wizard extends GameObject {
 
     // VARIABLES
     private Handler handler;
+    private Main game;
 
 
     // CONSTRUCTOR
-    public Wizard(int x, int y, ID id, Handler handler) {
+    public Wizard(int x, int y, ID id, Handler handler, Main game) {
         super(x, y, id);
         this.handler = handler;
+        this.game = game;
     }
 
 
@@ -65,6 +68,14 @@ public class Wizard extends GameObject {
                 if(getBounds().intersects(tempObject.getBounds())) {
                     x += velX * -1;
                     y += velY * -1;
+
+                }
+            }
+
+            if(tempObject.getId() == ID.Crate) {
+                if(getBounds().intersects(tempObject.getBounds())) {
+                    game.ammo += 10;
+                    handler.removeObject(tempObject);
 
                 }
             }

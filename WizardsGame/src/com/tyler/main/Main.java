@@ -3,6 +3,7 @@ package com.tyler.main;
 import com.tyler.gameObjects.Handler;
 import com.tyler.gameObjects.ID;
 import com.tyler.gameObjects.objects.Block;
+import com.tyler.gameObjects.objects.Crate;
 import com.tyler.gameObjects.objects.Enemy;
 import com.tyler.gameObjects.objects.Wizard;
 import com.tyler.image.BufferedImageLoader;
@@ -25,6 +26,8 @@ public class Main extends Canvas implements Runnable {
     private Handler handler;
     private Camera camera;
 
+    public int ammo = 100;
+
 
     // CONSTRUCTOR
     private Main() {
@@ -36,7 +39,7 @@ public class Main extends Canvas implements Runnable {
         camera = new Camera(0, 0, this);
 
         this.addKeyListener(new KeyInput(handler));
-        this.addMouseListener(new MouseInput(handler, camera));
+        this.addMouseListener(new MouseInput(handler, camera, this));
 
         BufferedImageLoader loader = new BufferedImageLoader();
         BufferedImage level = loader.loadImage("/levels/level1.png");
@@ -149,10 +152,12 @@ public class Main extends Canvas implements Runnable {
 
                 if(red == 255)
                     handler.addObject(new Block(xx * 32, yy * 32, ID.Block));
-                if(blue == 255)
-                    handler.addObject(new Wizard(xx * 32, yy * 32, ID.Player, handler));
-                if(green == 255)
+                if(blue == 255 && green == 0)
+                    handler.addObject(new Wizard(xx * 32, yy * 32, ID.Player, handler, this));
+                if(green == 255 && blue == 0)
                     handler.addObject(new Enemy(xx * 32, yy * 32, ID.Enemy, handler));
+                if(green == 255 && blue == 255)
+                    handler.addObject(new Crate(xx * 32, yy * 32, ID.Crate));
             }
         }
     }
