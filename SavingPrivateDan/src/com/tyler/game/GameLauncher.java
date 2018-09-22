@@ -10,8 +10,9 @@ import java.awt.image.BufferStrategy;
 public class GameLauncher extends Canvas implements Runnable {
 
     // Variables
-    private int width = 1280, height = 720;
-    private String title = "Saving Private Dan";
+    public static int width = 1280;
+    public static int height = 720;
+    public String title = "Saving Private Dan";
 
     private boolean isRunning = false;
     private Thread thread;
@@ -28,7 +29,7 @@ public class GameLauncher extends Canvas implements Runnable {
         gsm = new GameStateManager();
 
         // Handlers
-        mouse = new MouseHandler();
+        mouse = new MouseHandler(this);
         key = new KeyHandler(this);
 
         start();
