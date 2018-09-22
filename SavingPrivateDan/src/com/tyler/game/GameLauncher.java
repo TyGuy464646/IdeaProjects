@@ -24,13 +24,14 @@ public class GameLauncher extends Canvas implements Runnable {
     // Constructor
     public GameLauncher() {
         new Window(width, height, title, this);
-        start();
 
         gsm = new GameStateManager();
 
         // Handlers
         mouse = new MouseHandler();
-        key = new KeyHandler();
+        key = new KeyHandler(this);
+
+        start();
     }
 
 

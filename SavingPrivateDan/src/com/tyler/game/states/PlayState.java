@@ -19,7 +19,9 @@ public class PlayState extends GameState {
     }
 
     public void input(MouseHandler mouse, KeyHandler key) {
-
+        if(key.up.isDown) {
+            System.out.println("W is being pressed");
+        }
     }
 
     public void render(Graphics g) {
