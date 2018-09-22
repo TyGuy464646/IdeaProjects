@@ -1,24 +1,40 @@
 package com.tyler.game;
 
+import com.tyler.game.states.GameStateManager;
+import com.tyler.game.util.KeyHandler;
+import com.tyler.game.util.MouseHandler;
+
 import java.awt.*;
 import java.awt.image.BufferStrategy;
-import java.awt.image.BufferedImage;
 
 public class GameLauncher extends Canvas implements Runnable {
 
+    // Variables
     private int width = 1280, height = 720;
     private String title = "Saving Private Dan";
 
     private boolean isRunning = false;
     private Thread thread;
+    private GameStateManager gsm;
+
+    private MouseHandler mouse;
+    private KeyHandler key;
 
 
+    // Constructor
     public GameLauncher() {
         new Window(width, height, title, this);
         start();
+
+        gsm = new GameStateManager();
+
+        // Handlers
+        mouse = new MouseHandler();
+        key = new KeyHandler();
     }
 
 
+    // Methods
     private void start() {
         isRunning = true;
 
@@ -51,9 +67,11 @@ public class GameLauncher extends Canvas implements Runnable {
 
             while(delta >= 1) {
                 tick();
+                input(mouse, key);
                 delta--;
             }
             render();
+            input(mouse, key);
             frames++;
 
             if(System.currentTimeMillis() - timer > 1000) {
@@ -64,11 +82,15 @@ public class GameLauncher extends Canvas implements Runnable {
         stop();
     }
 
-    private void tick() {
-
+    public void tick() {
+        gsm.tick();
     }
 
-    private void render() {
+    public void input(MouseHandler mouse, KeyHandler key) {
+        gsm.input(mouse, key);
+    }
+
+    public void render() {
         BufferStrategy bs = this.getBufferStrategy();
 
         // If Buffer Strategy is null, create 3 buffers
@@ -85,19 +107,26 @@ public class GameLauncher extends Canvas implements Runnable {
         g.setColor(new Color(66, 134, 244));
         g.fillRect(0, 0, width, height);
 
+        // Game State Manager
+        gsm.render(g);
+
         ///////////////////////////////////////////////////////// END   RENDER
         g.dispose();
         bs.show();
     }
 
+
+    // Main Method
     public static void main(String[] args) {
         new GameLauncher();
     }
 
 
+    // Getters / Setters
     public int getWidth() {
         return width;
     }
+
     public void setWidth(int width) {
         this.width = width;
     }
@@ -105,6 +134,7 @@ public class GameLauncher extends Canvas implements Runnable {
     public int getHeight() {
         return height;
     }
+
     public void setHeight(int height) {
         this.height = height;
     }
@@ -112,6 +142,7 @@ public class GameLauncher extends Canvas implements Runnable {
     public String getTitle() {
         return title;
     }
+
     public void setTitle(String title) {
         this.title = title;
     }
