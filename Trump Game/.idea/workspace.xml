@@ -2,7 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="331ff8d5-558f-4c48-99e3-1b3d31e52be9" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../CustomButton/src/com/company/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/../CustomButton/src/com/company/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../WizardsGame/src/com/tyler/main/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/../WizardsGame/src/com/tyler/main/Main.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -18,19 +19,19 @@
     <session id="-1373803969">
       <usages-collector id="statistics.lifecycle.project">
         <counts>
-          <entry key="project.closed" value="24" />
+          <entry key="project.closed" value="25" />
           <entry key="project.open.time.0" value="13" />
-          <entry key="project.open.time.1" value="6" />
+          <entry key="project.open.time.1" value="7" />
           <entry key="project.open.time.11" value="1" />
           <entry key="project.open.time.2" value="3" />
           <entry key="project.open.time.4" value="1" />
-          <entry key="project.opened" value="24" />
+          <entry key="project.opened" value="25" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
         <counts>
           <entry key="class" value="1" />
-          <entry key="java" value="156" />
+          <entry key="java" value="162" />
           <entry key="png" value="17" />
         </counts>
       </usages-collector>
@@ -38,7 +39,7 @@
         <counts>
           <entry key="CLASS" value="1" />
           <entry key="Image" value="17" />
-          <entry key="JAVA" value="156" />
+          <entry key="JAVA" value="162" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
@@ -67,7 +68,22 @@
     <favorites_list name="Trump Game" />
   </component>
   <component name="FileEditorManager">
-    <leaf />
+    <leaf>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/com/tyler/engine/GameContainer.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="39">
+              <caret line="72" selection-start-line="72" selection-end-line="72" />
+              <folding>
+                <element signature="method#stop#0;class#GameContainer#0" />
+                <element signature="method#dispose#0;class#GameContainer#0" />
+                <element signature="method#setTitle#0;class#GameContainer#0" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -116,9 +132,9 @@
     </option>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="691" />
-    <option name="y" value="44" />
-    <option name="width" value="1280" />
+    <option name="x" value="640" />
+    <option name="y" value="23" />
+    <option name="width" value="640" />
     <option name="height" value="777" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
@@ -127,8 +143,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="PackagesPane" />
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -198,6 +212,8 @@
           <select />
         </subPane>
       </pane>
+      <pane id="PackagesPane" />
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -257,9 +273,10 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="691" y="44" width="1280" height="777" extended-state="0" />
+    <frame x="640" y="23" width="640" height="777" extended-state="0" />
+    <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.49908593" visible="true" weight="0.2352459" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.49908593" visible="true" weight="0.4949833" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Designer" order="2" />
       <window_info id="Learn" order="3" />
@@ -669,6 +686,12 @@
           <properties />
           <option name="timeStamp" value="85" />
         </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/com/tyler/engine/Window.java</url>
+          <line>23</line>
+          <properties />
+          <option name="timeStamp" value="86" />
+        </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
   </component>
@@ -700,17 +723,6 @@
             <element signature="method#stop#0;class#SoundClip#0" />
             <element signature="method#close#0;class#SoundClip#0" />
             <element signature="method#loop#0;class#SoundClip#0" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/tyler/engine/Window.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="60">
-          <caret line="11" column="13" selection-start-line="11" selection-start-column="13" selection-end-line="11" selection-end-column="13" />
-          <folding>
-            <element signature="method#Window#0;class#Window#0" />
-            <element signature="method#update#0;class#Window#0" />
           </folding>
         </state>
       </provider>
@@ -809,34 +821,6 @@
       </provider>
     </entry>
     <entry file="jar:///Library/Java/JavaVirtualMachines/jdk-10.0.2.jdk/Contents/Home/lib/src.zip!/java.base/java/lang/Thread.java" />
-    <entry file="file://$PROJECT_DIR$/src/com/tyler/engine/Renderer.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-305">
-          <caret line="26" selection-start-line="26" selection-end-line="26" selection-end-column="27" />
-          <folding>
-            <element signature="method#Renderer#0;class#Renderer#0" />
-            <element signature="method#clear#0;class#Renderer#0" />
-            <element signature="method#process#0;class#Renderer#0" />
-            <element signature="class#1294:1586" />
-            <element signature="method#compare#0;class#1294:1586" />
-            <element signature="method#setPixel#0;class#Renderer#0" />
-            <element signature="method#setLightMap#0;class#Renderer#0" />
-            <element signature="method#setLightBlock#0;class#Renderer#0" />
-            <element signature="method#drawText#0;class#Renderer#0" />
-            <element signature="method#drawImage#0;class#Renderer#0" />
-            <element signature="method#drawImageTile#0;class#Renderer#0" />
-            <element signature="method#drawRect#0;class#Renderer#0" />
-            <element signature="method#fillRect#0;class#Renderer#0" />
-            <element signature="method#drawLightRequest#0;class#Renderer#0" />
-            <element signature="method#drawLightLine#0;class#Renderer#0" />
-            <element signature="e#10168#10169#0" expanded="true" />
-            <element signature="e#10195#10196#0" expanded="true" />
-            <element signature="e#10291#10292#0" expanded="true" />
-            <element signature="e#10318#10319#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/com/tyler/game/Player.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="320">
@@ -846,13 +830,6 @@
             <element signature="e#4481#4482#0" expanded="true" />
             <element signature="e#4556#4557#0" expanded="true" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/tyler/game/GameManager.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="435">
-          <caret line="34" column="24" lean-forward="true" selection-start-line="34" selection-start-column="24" selection-end-line="34" selection-end-column="24" />
         </state>
       </provider>
     </entry>
@@ -876,9 +853,49 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/tyler/engine/Renderer.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="15">
+          <caret line="26" selection-start-line="26" selection-end-line="26" selection-end-column="27" />
+          <folding>
+            <element signature="method#Renderer#0;class#Renderer#0" />
+            <element signature="method#clear#0;class#Renderer#0" />
+            <element signature="method#process#0;class#Renderer#0" />
+            <element signature="method#setPixel#0;class#Renderer#0" />
+            <element signature="method#setLightMap#0;class#Renderer#0" />
+            <element signature="method#setLightBlock#0;class#Renderer#0" />
+            <element signature="method#drawText#0;class#Renderer#0" />
+            <element signature="method#drawImage#0;class#Renderer#0" />
+            <element signature="method#drawImageTile#0;class#Renderer#0" />
+            <element signature="method#drawRect#0;class#Renderer#0" />
+            <element signature="method#fillRect#0;class#Renderer#0" />
+            <element signature="method#drawLightRequest#0;class#Renderer#0" />
+            <element signature="method#drawLightLine#0;class#Renderer#0" />
+            <element signature="e#10168#10169#0" expanded="true" />
+            <element signature="e#10195#10196#0" expanded="true" />
+            <element signature="e#10291#10292#0" expanded="true" />
+            <element signature="e#10318#10319#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/tyler/game/GameManager.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-562">
+          <caret line="34" column="24" lean-forward="true" selection-start-line="34" selection-start-column="24" selection-end-line="34" selection-end-column="24" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/tyler/engine/Window.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-187">
+          <caret line="11" column="13" selection-start-line="11" selection-start-column="13" selection-end-line="11" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/com/tyler/engine/GameContainer.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="983">
+        <state relative-caret-position="39">
           <caret line="72" selection-start-line="72" selection-end-line="72" />
           <folding>
             <element signature="method#stop#0;class#GameContainer#0" />

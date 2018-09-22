@@ -19,7 +19,7 @@ public class Main extends Canvas implements Runnable {
 
     // VARIABLES
     private int width = 1000,
-            height = 563;
+                height = 563;
     private String title = "Wizard Game";
 
     private boolean isRunning = false;
