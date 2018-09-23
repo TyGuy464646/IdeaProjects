@@ -82,4 +82,10 @@ public abstract class Entity {
     public abstract void render(Graphics g);
     public void input(KeyHandler key, MouseHandler mouse) {}
 
+
+    // Getters / Setters
+    public int getSize() {
+        return size;
+    }
+
 }
