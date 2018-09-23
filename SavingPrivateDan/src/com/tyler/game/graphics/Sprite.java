@@ -14,10 +14,10 @@ public class Sprite {
     private BufferedImage[][] spriteArray;
 
     private final int TILE_SIZE = 32;
-    public int width,
-            height;
-    public int widthSprite,
-            heightSprite;
+    public int  width,
+                height;
+    public int  widthSprite,
+                heightSprite;
 
 
     // Constructor
@@ -110,10 +110,11 @@ public class Sprite {
             if(word.charAt(i) != 32) { // 32 is the special number for space
                 g.drawImage(f.getFont(word.charAt(i)), (int) x, (int) y, width, height, null);
             }
+
+            x += xOffset;
+            y += yOffset;
         }
 
-        x += xOffset;
-        y += yOffset;
     }
 
 
