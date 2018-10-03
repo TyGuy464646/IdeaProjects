@@ -22,6 +22,7 @@ public class Camera {
         x += ((object.getX() - x) - game.getWidth()/2) * 0.05f; // makes camera smooth
         y += ((object.getY() - y) - game.getHeight()/2) * 0.05f; // makes camera smooth
 
+
         // clamp
         if(x <= 0) x = 0;
         if(x >= game.getWidth() + 32) x = game.getWidth() + 32;
