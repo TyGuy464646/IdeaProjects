@@ -25,7 +25,7 @@ public class KeyInput extends KeyAdapter {
 
         for(int i = 0; i < handler.object.size(); i++) {
             GameObject tempObject = handler.object.get(i);
-
+            
             // PLAYER
             if(tempObject.getId() == ID.Player) {
                 if(key == KeyEvent.VK_W) handler.setUp(true);
