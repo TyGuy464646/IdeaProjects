@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.paint.LinearGradient?>
+<?import javafx.scene.paint.Stop?>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Font?>
+
+
+<VBox alignment="center" prefHeight="300.0" prefWidth="600.0" style="-fx-background-color: rgb(45,45,45);" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controller">
+   <children>
+      <HBox prefHeight="100.0" prefWidth="200.0">
+         <children>
+            <StackPane prefHeight="100.0" prefWidth="200.0">
+               <children>
+                  <Label fx:id="minLabel" text="00" textFill="WHITE">
+                     <font>
+                        <Font size="64.0" />
+                     </font>
+                  </Label>
+               </children>
+            </StackPane>
+            <StackPane prefHeight="150.0" prefWidth="200.0">
+               <children>
+                  <Label fx:id="secLabel" text="00" textFill="WHITE">
+                     <font>
+                        <Font size="64.0" />
+                     </font>
+                  </Label>
+               </children>
+            </StackPane>
+            <StackPane prefHeight="150.0" prefWidth="200.0">
+               <children>
+                  <Label fx:id="tenthsLabel" text="0" textFill="WHITE">
+                     <font>
+                        <Font size="64.0" />
+                     </font>
+                  </Label>
+               </children>
+            </StackPane>
+         </children>
+      </HBox>
+      <Rectangle fx:id="secondsMeter" arcHeight="5.0" arcWidth="5.0" height="50.0" stroke="BLACK" strokeType="INSIDE" width="600.0">
+         <fill>
+            <LinearGradient endX="1.0" endY="0.875" startY="0.5048076923076923">
+               <stops>
+                  <Stop color="BLACK" />
+                  <Stop color="WHITE" offset="1.0" />
+               </stops>
+            </LinearGradient>
+         </fill>
+      </Rectangle>
+      <Rectangle fx:id="tenthsMeter" arcHeight="5.0" arcWidth="5.0" fill="#808080" height="50.0" layoutX="10.0" layoutY="135.0" stroke="BLACK" strokeType="INSIDE" width="600.0" />
+      <HBox prefHeight="100.0" prefWidth="200.0">
+         <children>
+            <StackPane prefHeight="150.0" prefWidth="300.0">
+               <children>
+                  <Button mnemonicParsing="false" onAction="#startStopAction" text="Start / Stop">
+                     <font>
+                        <Font size="24.0" />
+                     </font>
+                  </Button>
+               </children>
+            </StackPane>
+            <StackPane layoutX="10.0" layoutY="10.0" prefHeight="150.0" prefWidth="300.0">
+               <children>
+                  <Button mnemonicParsing="false" onAction="#resetAction" text="Reset">
+                     <font>
+                        <Font size="24.0" />
+                     </font>
+                  </Button>
+               </children>
+            </StackPane>
+         </children>
+      </HBox>
+   </children>
+</VBox>
