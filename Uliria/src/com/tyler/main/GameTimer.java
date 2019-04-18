@@ -34,7 +34,7 @@ public class GameTimer extends AnimationTimer {
                 frameDuration = 0;
                 frameCount = 0;
 
-                game.label.setText(String.format("FPS: %.2f ", FPS));
+                game.fpsLabel.setText(String.format("FPS: %.2f ", FPS));
             }
 
 

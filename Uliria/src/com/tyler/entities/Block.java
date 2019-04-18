@@ -23,7 +23,7 @@ public class Block {
         this.blockColor = color;
 
         block = new Rectangle(width, height, color);
-        game.pane.getChildren().add(block);
+        game.spritePane.getChildren().add(block);
     }
 
     public void tick() {

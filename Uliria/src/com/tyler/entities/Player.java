@@ -14,7 +14,7 @@ public class Player {
     public Color playerColor;
     public int playerX, playerY;
     public double playerVelX, playerVelY;
-    public int playerSpeed;
+    public int playerBaseSpeed, playerSpeed;
 
     public Player(Game game, int x, int y, int width, int height, int speed, Color color) {
         this.game = game;
@@ -22,11 +22,13 @@ public class Player {
         this.playerY = y;
         this.playerWidth = width;
         this.playerHeight = height;
-        this.playerSpeed = speed;
+        this.playerBaseSpeed = speed;
         this.playerColor = color;
 
+        this.playerSpeed = this.playerBaseSpeed;
+
         player = new Rectangle(width, height, color);
-        game.pane.getChildren().add(player);
+        game.spritePane.getChildren().add(player);
     }
 
     public void tick() {
@@ -83,10 +85,8 @@ public class Player {
                 double blockCenter = game.block.blockY + game.block.blockHeight / 2;
 
                 if (playerCenter < blockCenter) {
-                    playerVelY = 0;
                     playerY = game.block.blockY - playerHeight;
                 } else {
-                    playerVelY = 0;
                     playerY = game.block.blockY + game.block.blockHeight;
                 }
             }
@@ -95,10 +95,8 @@ public class Player {
                 double blockCenter = game.block.blockX + game.block.blockWidth / 2;
 
                 if (playerCenter < blockCenter) {
-                    playerVelX = 0;
                     playerX = game.block.blockX - playerWidth;
-                } else {
-                    playerVelX = 0;
+                } else if (playerCenter > blockCenter) {
                     playerX = game.block.blockX + game.block.blockWidth;
                 }
             }
