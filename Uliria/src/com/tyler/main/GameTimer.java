@@ -4,10 +4,12 @@ import javafx.animation.AnimationTimer;
 
 public class GameTimer extends AnimationTimer {
 
-    double targetFrameRate = 60;
+    double targetFrameRate = 65;
     long lastFrameNanoTime;
     long targetFrameTime;
-    int FPS;
+    double FPS;
+    double frameDuration;
+    int frameCount;
 
     Game game;
 
@@ -20,10 +22,21 @@ public class GameTimer extends AnimationTimer {
     public void handle (long now) {
         // check for target framerate
         if (now - lastFrameNanoTime > targetFrameTime) {
-            game.tick();
-            game.inputTick();
-            game.physicsTick();
             game.gameStateTick();
+            game.physicsTick();
+            game.inputTick();
+            game.tick();
+
+            frameDuration +=  (now - lastFrameNanoTime) / 1000000000.0;
+            frameCount++;
+            if (frameDuration > 1) {
+                FPS = frameCount / frameDuration;
+                frameDuration = 0;
+                frameCount = 0;
+
+                game.label.setText(String.format("FPS: %.2f ", FPS));
+            }
+
 
             lastFrameNanoTime = now;
         }

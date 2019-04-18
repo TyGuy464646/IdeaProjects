@@ -1,5 +1,8 @@
 package com.tyler.main;
 
+import com.tyler.entities.Block;
+import com.tyler.entities.Player;
+import javafx.animation.ParallelTransition;
 import javafx.application.Application;
 import javafx.event.EventHandler;
 import javafx.scene.Scene;
@@ -13,40 +16,42 @@ import javafx.stage.Stage;
 public class Game extends Application {
 
     GameTimer timer;
+    public Player player;
+    public Block block;
+
+    public Pane pane;
+    public Label label;
 
     int screenWidth = 800;
     int screenHeight = 600;
 
-    boolean AisPressed = false;
-    boolean SisPressed = false;
-    boolean DisPressed = false;
-    boolean WisPressed = false;
+    public boolean AisPressed = false;
+    public boolean SisPressed = false;
+    public boolean DisPressed = false;
+    public boolean WisPressed = false;
 
-    double boxXVelocity = 0;
-    double boxYVelocity = 0;
-    double boxX = 50;
-    double boxY = 50;
-    double speed = 5;
-
-    Rectangle box;
-    Label label;
 
 
     @Override
     public void start (Stage stage) throws Exception {
         timer = new GameTimer(this);
 
-        Pane pane = new Pane();
+        pane = new Pane();
         Scene scene = new Scene(pane, screenWidth, screenHeight);
         stage.setScene(scene);
         stage.setTitle("Uliria");
         stage.setResizable(false);
         stage.show();
 
-        label = new Label("FPS: " + timer.FPS);
-        box = new Rectangle(50, 100, Color.RED);
-        pane.getChildren().addAll(box, label);
+        // FPS Label
+        label = new Label();
+        pane.getChildren().add(label);
 
+        // Add Entities
+        block = new Block(this, 200, 100, 50, 50, Color.GRAY);
+        player = new Player(this, 50, 50, 25, 25, 5, Color.RED);
+
+        // Handlers
         stage.addEventHandler(KeyEvent.KEY_PRESSED, new EventHandler<KeyEvent>() {
             @Override
             public void handle (KeyEvent event) {
@@ -66,7 +71,6 @@ public class Game extends Application {
                 }
             }
         });
-
         stage.addEventHandler(KeyEvent.KEY_RELEASED, new EventHandler<KeyEvent>() {
             @Override
             public void handle (KeyEvent event) {
@@ -89,47 +93,12 @@ public class Game extends Application {
     }
 
     public void tick() {
-        boxX += boxXVelocity;
-        boxY += boxYVelocity;
-
-        box.setX(boxX);
-        box.setY(boxY);
+        player.tick();
+        block.tick();
     }
 
     public void inputTick() {
-        if (AisPressed || DisPressed) {
-            if (AisPressed) {
-                boxXVelocity = -speed;
-            }
-            if (DisPressed) {
-                boxXVelocity = speed;
-            }
-        } else {
-            boxXVelocity = 0;
-        }
-
-        if (WisPressed || SisPressed) {
-            if (WisPressed) {
-                boxYVelocity = -speed;
-            }
-            if (SisPressed) {
-                boxYVelocity = speed;
-            }
-        } else {
-            boxYVelocity = 0;
-        }
-
-        if (AisPressed && DisPressed) {
-            boxXVelocity = 0;
-        }
-        if (WisPressed && SisPressed) {
-            boxYVelocity = 0;
-        }
-
-        if (boxXVelocity != 0 && boxYVelocity != 0) {
-            boxXVelocity /= Math.sqrt(2);
-            boxYVelocity /= Math.sqrt(2);
-        }
+        player.inputTick();
     }
 
     public void gameStateTick() {
@@ -137,6 +106,6 @@ public class Game extends Application {
     }
 
     public void physicsTick() {
-
+        player.physicsTick();
     }
 }
