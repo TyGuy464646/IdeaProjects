@@ -103,7 +103,7 @@ public class Game extends Application {
         }
 
         // Show the Stage
-        stage.setTitle("Uliria");
+        stage.setTitle("Trump Game");
         stage.setResizable(false);
         stage.show();
     }
