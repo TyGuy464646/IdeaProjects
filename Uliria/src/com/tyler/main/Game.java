@@ -1,7 +1,9 @@
 package com.tyler.main;
 
-import com.tyler.entities.Block;
-import com.tyler.entities.Player;
+import com.tyler.entities.Handler;
+import com.tyler.entities.ID;
+import com.tyler.entities.objects.Block;
+import com.tyler.entities.objects.Player;
 import javafx.application.Application;
 import javafx.event.EventHandler;
 import javafx.scene.Scene;
@@ -14,73 +16,79 @@ import javafx.stage.Stage;
 
 public class Game extends Application {
 
-    GameTimer timer;
-    public Player player;
-    public Block block;
+    // Initialize Screen Width / Height
+    public int screenHeight = 600;
+    public int screenWidth = 800;
 
-    public StackPane root;
-    public Pane backgroundPane;
-    public Pane spritePane;
-    public Pane userInterfacePane;
+    // Import Classes
+    private GameTimer timer;
+    private Handler handler;
 
+    // Initialize Panes
+    public StackPane titlePane, gamePane;
+    public Pane titleBackgroundPane, titleUserInterfacePane;
+    public Pane gameBackgroundPane, gameSpritePane, gameUserInterfacePane;
 
+    // Initialize FPS Label
     public Label fpsLabel;
 
-    int screenWidth = 800;
-    int screenHeight = 600;
-
-    public boolean AisPressed = false;
-    public boolean SisPressed = false;
-    public boolean DisPressed = false;
-    public boolean WisPressed = false;
-
+    // Initialize Scene Booleans
+    public boolean playTitleScreen = false;
+    public boolean playGameScrene = true;
 
 
     @Override
     public void start (Stage stage) throws Exception {
-        // Initialize the Timer
+        // Call the Timer and Handler
         timer = new GameTimer(this);
+        handler = new Handler();
 
-        // Initialize all the panes
-        root = new StackPane();
-        backgroundPane = new Pane();
-        spritePane = new Pane();
-        userInterfacePane = new Pane();
+        // Call Scene Panes
+        gamePane = new StackPane();
+        titlePane = new StackPane();
 
-        // Set the scene and show the stage
-        Scene scene = new Scene(root, screenWidth, screenHeight, Color.WHITE);
-        stage.setScene(scene);
-        stage.setTitle("Uliria");
-        stage.setResizable(false);
-        stage.show();
+        // Call Graphic Panes
+        gameBackgroundPane = new Pane();
+        gameSpritePane = new Pane();
+        gameUserInterfacePane = new Pane();
 
-        // Add all panes to the root
-        root.getChildren().addAll(backgroundPane, spritePane, userInterfacePane);
+        titleBackgroundPane = new Pane();
+        titleUserInterfacePane = new Pane();
+
+        // Set the Scene
+        Scene titleScene = new Scene(titlePane, screenWidth, screenHeight, Color.WHITE);
+        Scene gameScene = new Scene(gamePane, screenWidth, screenHeight, Color.WHITE);
+
+        // Add All Panes to the Root
+        gamePane.getChildren().addAll(gameBackgroundPane, gameSpritePane, gameUserInterfacePane);
+        titlePane.getChildren().addAll(titleBackgroundPane, titleUserInterfacePane);
 
         // FPS Label
         fpsLabel = new Label();
-        userInterfacePane.getChildren().add(fpsLabel);
+        gameUserInterfacePane.getChildren().add(fpsLabel);
 
         // Add Entities
-        block = new Block(this, 200, 100, 50, 50, Color.GREY);
-        player = new Player(this, 50, 50, 25, 25, 5, Color.RED);
+        if (playGameScrene) {
+            handler.addObject(new Block(this, 200, 100, 50, 50, ID.Block));
+            handler.addObject(new Player(this, handler, 50, 50, 25, 25, 5, ID.Player));
+        }
 
-        // Handlers
+        // Key Input Handler
         stage.addEventHandler(KeyEvent.KEY_PRESSED, new EventHandler<KeyEvent>() {
             @Override
             public void handle (KeyEvent event) {
                 switch (event.getCode()) {
                     case A:
-                        AisPressed = true;
+                        handler.setLeft(true);
                         break;
                     case D:
-                        DisPressed = true;
+                        handler.setRight(true);
                         break;
                     case W:
-                        WisPressed = true;
+                        handler.setUp(true);
                         break;
                     case S:
-                        SisPressed = true;
+                        handler.setDown(true);
                         break;
                 }
             }
@@ -90,34 +98,39 @@ public class Game extends Application {
             public void handle (KeyEvent event) {
                 switch (event.getCode()) {
                     case A:
-                        AisPressed = false;
+                        handler.setLeft(false);
                         break;
                     case D:
-                        DisPressed = false;
+                        handler.setRight(false);
                         break;
                     case W:
-                        WisPressed = false;
+                        handler.setUp(false);
                         break;
                     case S:
-                        SisPressed = false;
+                        handler.setDown(false);
                         break;
                 }
             }
         });
+
+        // Set Scene
+        if (playTitleScreen) {
+            stage.setScene(titleScene);
+        } else {
+            stage.setScene(gameScene);
+        }
+
+        // Show the Stage
+        stage.setTitle("Uliria");
+        stage.setResizable(false);
+        stage.show();
     }
 
     // Tick Methods
-    public void tick() {
-        player.tick();
-        block.tick();
-    }
-    public void inputTick() {
-        player.inputTick();
-    }
     public void gameStateTick() {
 
     }
-    public void physicsTick() {
-        player.physicsTick();
+    public void tick() {
+        handler.tick();
     }
 }

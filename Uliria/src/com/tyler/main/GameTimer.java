@@ -23,8 +23,6 @@ public class GameTimer extends AnimationTimer {
         // check for target framerate
         if (now - lastFrameNanoTime > targetFrameTime) {
             game.gameStateTick();
-            game.physicsTick();
-            game.inputTick();
             game.tick();
 
             frameDuration +=  (now - lastFrameNanoTime) / 1000000000.0;
