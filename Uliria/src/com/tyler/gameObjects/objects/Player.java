@@ -3,6 +3,7 @@ package com.tyler.gameObjects.objects;
 import com.tyler.gameObjects.GameObject;
 import com.tyler.gameObjects.Handler;
 import com.tyler.gameObjects.ID;
+import com.tyler.gameState.screens.GameScreen;
 import com.tyler.main.Game;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
@@ -13,8 +14,11 @@ public class Player extends GameObject {
     private Game game;
     private Handler handler;
 
+    // Initialize Screens
+    private GameScreen gameScreen;
+
     // Initialize player
-    Rectangle player;
+    private Rectangle player;
 
     // Initialize Player Variables
     public Color playerColor = Color.RED;
@@ -22,16 +26,17 @@ public class Player extends GameObject {
                playerSpeed;
 
 
-    public Player(Game game, Handler handler, int x, int y, int width, int height, int speed, ID id) {
+    public Player(Game game, Handler handler, GameScreen gameScreen, int x, int y, int width, int height, int speed, ID id) {
         super(x, y, width, height, id);
         this.game = game;
         this.handler = handler;
+        this.gameScreen = gameScreen;
 
         this.playerBaseSpeed = speed;
         this.playerSpeed = this.playerBaseSpeed;
 
         player = new Rectangle(width, height, playerColor);
-        game.gameSpritePane.getChildren().add(player);
+        gameScreen.addGameSpritePane(player);
     }
 
     public void tick() {

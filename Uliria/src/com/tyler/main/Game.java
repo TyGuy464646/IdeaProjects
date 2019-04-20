@@ -4,6 +4,10 @@ import com.tyler.gameObjects.Handler;
 import com.tyler.gameObjects.ID;
 import com.tyler.gameObjects.objects.Block;
 import com.tyler.gameObjects.objects.Player;
+import com.tyler.gameState.GameStateManager;
+import com.tyler.gameState.screens.GameScreen;
+import com.tyler.gameState.screens.PauseScreen;
+import com.tyler.gameState.screens.TitleScreen;
 import javafx.application.Application;
 import javafx.event.EventHandler;
 import javafx.scene.Scene;
@@ -23,55 +27,32 @@ public class Game extends Application {
     // Import Classes
     private GameTimer timer;
     private Handler handler;
+    private GameStateManager gsm;
 
-    // Initialize Panes
-    public StackPane titlePane, gamePane;
-    public Pane titleBackgroundPane, titleUserInterfacePane;
-    public Pane gameBackgroundPane, gameSpritePane, gameUserInterfacePane;
+    // Initialize Screens
+    private TitleScreen titleScreen;
+    private GameScreen gameScreen;
+    private PauseScreen pauseScreen;
 
     // Initialize FPS Label
     public Label fpsLabel;
 
-    // Initialize Scene Booleans
-    public boolean playTitleScreen = false;
-    public boolean playGameScrene = true;
-
 
     @Override
     public void start (Stage stage) throws Exception {
-        // Call the Timer and Handler
+        // Call the Classes
         timer = new GameTimer(this);
         handler = new Handler();
+        gsm = new GameStateManager();
 
-        // Call Scene Panes
-        gamePane = new StackPane();
-        titlePane = new StackPane();
-
-        // Call Graphic Panes
-        gameBackgroundPane = new Pane();
-        gameSpritePane = new Pane();
-        gameUserInterfacePane = new Pane();
-
-        titleBackgroundPane = new Pane();
-        titleUserInterfacePane = new Pane();
-
-        // Set the Scene
-        Scene titleScene = new Scene(titlePane, screenWidth, screenHeight, Color.WHITE);
-        Scene gameScene = new Scene(gamePane, screenWidth, screenHeight, Color.WHITE);
-
-        // Add All Panes to the Root
-        gamePane.getChildren().addAll(gameBackgroundPane, gameSpritePane, gameUserInterfacePane);
-        titlePane.getChildren().addAll(titleBackgroundPane, titleUserInterfacePane);
+        // Call Screens
+        titleScreen = new TitleScreen(this, handler);
+        gameScreen = new GameScreen(this, handler);
+        pauseScreen = new PauseScreen(this, handler);
 
         // FPS Label
         fpsLabel = new Label();
-        gameUserInterfacePane.getChildren().add(fpsLabel);
-
-        // Add Entities
-        if (playGameScrene) {
-            handler.addObject(new Block(this, 200, 100, 50, 50, ID.Block));
-            handler.addObject(new Player(this, handler, 50, 50, 25, 25, 5, ID.Player));
-        }
+        gameScreen.addFpsLabel(fpsLabel);
 
         // Key Input Handler
         stage.addEventHandler(KeyEvent.KEY_PRESSED, new EventHandler<KeyEvent>() {
@@ -114,10 +95,12 @@ public class Game extends Application {
         });
 
         // Set Scene
-        if (playTitleScreen) {
-            stage.setScene(titleScene);
+        if (gsm.isPlayTitleScreen()) {
+            stage.setScene(titleScreen.setScene());
+        } else if (gsm.isPlayPauseScreen()) {
+            stage.setScene(pauseScreen.setScene());
         } else {
-            stage.setScene(gameScene);
+            stage.setScene(gameScreen.setScene());
         }
 
         // Show the Stage
@@ -127,10 +110,15 @@ public class Game extends Application {
     }
 
     // Tick Methods
-    public void gameStateTick() {
-
-    }
     public void tick() {
         handler.tick();
+    }
+
+    // Getters
+    public int getScreenHeight () {
+        return screenHeight;
+    }
+    public int getScreenWidth () {
+        return screenWidth;
     }
 }
