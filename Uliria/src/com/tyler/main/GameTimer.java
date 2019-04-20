@@ -1,20 +1,24 @@
 package com.tyler.main;
 
+import com.tyler.gameObjects.Handler;
+import com.tyler.gameState.screens.GameScreen;
 import javafx.animation.AnimationTimer;
 
 public class GameTimer extends AnimationTimer {
 
-    double targetFrameRate = 65;
-    long lastFrameNanoTime;
-    long targetFrameTime;
-    double FPS;
-    double frameDuration;
-    int frameCount;
+    private double targetFrameRate = 65;
+    private long lastFrameNanoTime;
+    private long targetFrameTime;
+    private double FPS;
+    private double frameDuration;
+    private int frameCount;
 
-    Game game;
+    private Game game;
 
-    GameTimer (Game game) {
+
+    public GameTimer (Game game) {
         this.game = game;
+
         start();
     }
 

@@ -13,6 +13,7 @@ import javafx.event.EventHandler;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.input.KeyEvent;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.StackPane;
 import javafx.scene.paint.Color;
@@ -52,7 +53,7 @@ public class Game extends Application {
 
         // FPS Label
         fpsLabel = new Label();
-        gameScreen.addFpsLabel(fpsLabel);
+        gameScreen.addGameUserInterfacePane(fpsLabel);
 
         // Key Input Handler
         stage.addEventHandler(KeyEvent.KEY_PRESSED, new EventHandler<KeyEvent>() {
@@ -70,6 +71,9 @@ public class Game extends Application {
                         break;
                     case S:
                         handler.setDown(true);
+                        break;
+                    case F1:
+                        handler.setF1(true);
                         break;
                 }
             }
@@ -89,6 +93,9 @@ public class Game extends Application {
                         break;
                     case S:
                         handler.setDown(false);
+                        break;
+                    case F1:
+                        handler.setF1(false);
                         break;
                 }
             }

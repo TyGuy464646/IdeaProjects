@@ -11,7 +11,6 @@ import javafx.scene.shape.Rectangle;
 public class Player extends GameObject {
 
     // Initialize Classes
-    private Game game;
     private Handler handler;
 
     // Initialize Screens
@@ -26,9 +25,8 @@ public class Player extends GameObject {
                playerSpeed;
 
 
-    public Player(Game game, Handler handler, GameScreen gameScreen, int x, int y, int width, int height, int speed, ID id) {
+    public Player(Handler handler, GameScreen gameScreen, int x, int y, int width, int height, int speed, ID id) {
         super(x, y, width, height, id);
-        this.game = game;
         this.handler = handler;
         this.gameScreen = gameScreen;
 

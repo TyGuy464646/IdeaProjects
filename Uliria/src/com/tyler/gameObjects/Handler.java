@@ -12,6 +12,10 @@ public class Handler {
     public boolean down = false;
     public boolean right = false;
     public boolean up = false;
+    public boolean f1 = false;
+
+    public boolean primaryClick = false;
+    public boolean secondaryClick = false;
 
 
     // Methods
@@ -60,5 +64,12 @@ public class Handler {
     }
     public void setUp (boolean up) {
         this.up = up;
+    }
+
+    public boolean isF1 () {
+        return f1;
+    }
+    public void setF1 (boolean f1) {
+        this.f1 = f1;
     }
 }

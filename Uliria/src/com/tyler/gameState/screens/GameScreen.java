@@ -44,8 +44,8 @@ public class GameScreen {
         gameScene = new Scene(gamePane, game.getScreenWidth(), game.getScreenHeight(), Color.WHITE);
 
         // Add Objects
-        handler.addObject(new Block(game, this, 200, 100, 50, 50, ID.Block));
-        handler.addObject(new Player(game, handler, this, 50, 50, 25, 25, 5, ID.Player));
+        handler.addObject(new Block(this, 200, 100, 50, 50, ID.Block));
+        handler.addObject(new Player(handler, this, 50, 50, 25, 25, 5, ID.Player));
 
     }
 
@@ -74,11 +74,6 @@ public class GameScreen {
     public void addGameUserInterfacePane(Node[] nodes) { gameUserInterfacePane.getChildren().addAll(nodes); }
     public void removeGameUserInterfacePane(Node node) {
         gameUserInterfacePane.getChildren().remove(node);
-    }
-
-
-    public void addFpsLabel(Label fpsLabel) {
-        gameUserInterfacePane.getChildren().add(fpsLabel);
     }
 
     public Scene setScene() {
