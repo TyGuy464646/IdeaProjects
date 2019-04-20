@@ -1,7 +1,6 @@
 package com.tyler.gameState.screens;
 
 import com.tyler.gameObjects.Handler;
-import com.tyler.gameState.GameStateManager;
 import com.tyler.main.Game;
 import javafx.scene.Node;
 import javafx.scene.Scene;

@@ -1,7 +1,5 @@
 package com.tyler.main;
 
-import com.tyler.gameObjects.Handler;
-import com.tyler.gameState.screens.GameScreen;
 import javafx.animation.AnimationTimer;
 
 public class GameTimer extends AnimationTimer {

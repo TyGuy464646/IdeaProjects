@@ -4,7 +4,6 @@ import com.tyler.gameObjects.GameObject;
 import com.tyler.gameObjects.Handler;
 import com.tyler.gameObjects.ID;
 import com.tyler.gameState.screens.GameScreen;
-import com.tyler.main.Game;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
 

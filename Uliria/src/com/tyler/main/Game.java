@@ -1,22 +1,14 @@
 package com.tyler.main;
 
 import com.tyler.gameObjects.Handler;
-import com.tyler.gameObjects.ID;
-import com.tyler.gameObjects.objects.Block;
-import com.tyler.gameObjects.objects.Player;
 import com.tyler.gameState.GameStateManager;
 import com.tyler.gameState.screens.GameScreen;
 import com.tyler.gameState.screens.PauseScreen;
 import com.tyler.gameState.screens.TitleScreen;
 import javafx.application.Application;
 import javafx.event.EventHandler;
-import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.input.KeyEvent;
-import javafx.scene.input.MouseEvent;
-import javafx.scene.layout.Pane;
-import javafx.scene.layout.StackPane;
-import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 
 public class Game extends Application {
