@@ -1,8 +1,7 @@
-package com.tyler.entities.objects;
+package com.tyler.gameObjects.objects;
 
-import com.tyler.entities.GameObject;
-import com.tyler.entities.Handler;
-import com.tyler.entities.ID;
+import com.tyler.gameObjects.GameObject;
+import com.tyler.gameObjects.ID;
 import com.tyler.main.Game;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;

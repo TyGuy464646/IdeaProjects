@@ -1,4 +1,4 @@
-package com.tyler.entities;
+package com.tyler.gameObjects;
 
 public enum ID {
 

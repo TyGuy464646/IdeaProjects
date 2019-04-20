@@ -1,9 +1,9 @@
 package com.tyler.main;
 
-import com.tyler.entities.Handler;
-import com.tyler.entities.ID;
-import com.tyler.entities.objects.Block;
-import com.tyler.entities.objects.Player;
+import com.tyler.gameObjects.Handler;
+import com.tyler.gameObjects.ID;
+import com.tyler.gameObjects.objects.Block;
+import com.tyler.gameObjects.objects.Player;
 import javafx.application.Application;
 import javafx.event.EventHandler;
 import javafx.scene.Scene;
