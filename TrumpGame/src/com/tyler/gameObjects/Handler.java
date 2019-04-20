@@ -12,7 +12,7 @@ public class Handler {
     public boolean down = false;
     public boolean right = false;
     public boolean up = false;
-    public boolean f1 = false;
+    public boolean space = false;
 
     public boolean primaryClick = false;
     public boolean secondaryClick = false;
@@ -66,10 +66,10 @@ public class Handler {
         this.up = up;
     }
 
-    public boolean isF1 () {
-        return f1;
+    public boolean isSpace () {
+        return space;
     }
-    public void setF1 (boolean f1) {
-        this.f1 = f1;
+    public void setSpace (boolean space) {
+        this.space = space;
     }
 }

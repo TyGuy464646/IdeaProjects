@@ -64,8 +64,8 @@ public class Game extends Application {
                     case S:
                         handler.setDown(true);
                         break;
-                    case F1:
-                        handler.setF1(true);
+                    case SPACE:
+                        handler.setSpace(true);
                         break;
                 }
             }
@@ -86,8 +86,8 @@ public class Game extends Application {
                     case S:
                         handler.setDown(false);
                         break;
-                    case F1:
-                        handler.setF1(false);
+                    case SPACE:
+                        handler.setSpace(false);
                         break;
                 }
             }
