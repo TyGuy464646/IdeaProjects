@@ -22,8 +22,8 @@ public class TitleScreen {
     public Scene titleScene;
 
     // Initialize Buttons
-    Button startButton = new Button("Start", Button.titleScreenStyle, 500, 400);
-    Button exitButton = new Button("Exit", Button.titleScreenStyle, 500, 475);
+    Button startButton = new Button("Start", Button.titleScreenStyle, game.screenWidth / 2 - 100, 100);
+    Button exitButton = new Button("Exit", Button.titleScreenStyle, game.screenWidth / 2 - 100, 175);
 
     // Initialize Panes
     private StackPane titlePane;
