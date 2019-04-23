@@ -25,8 +25,8 @@ public class Handler {
             GameObject tempObject = object.get(i);
 
             tempObject.inputTick();
-            tempObject.physicsTick();
             tempObject.tick();
+            tempObject.physicsTick();
         }
     }
 

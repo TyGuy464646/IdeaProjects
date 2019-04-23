@@ -4,6 +4,7 @@ import com.tyler.gameObjects.Handler;
 import com.tyler.gameObjects.ID;
 import com.tyler.gameObjects.objects.Block;
 import com.tyler.gameObjects.objects.Player;
+import com.tyler.gameState.GameStateManager;
 import com.tyler.main.Game;
 import javafx.scene.Node;
 import javafx.scene.Scene;
@@ -16,6 +17,7 @@ public class GameScreen {
     // Import Classes
     Game game;
     Handler handler;
+    GameStateManager gsm;
 
     // Initialize Scene
     public Scene gameScene;
@@ -26,9 +28,10 @@ public class GameScreen {
 
 
     // Constructor
-    public GameScreen (Game game, Handler handler) {
+    public GameScreen (Game game, Handler handler, GameStateManager gsm) {
         this.game = game;
         this.handler = handler;
+        this.gsm = gsm;
 
         // Call Panes
         gamePane = new StackPane();

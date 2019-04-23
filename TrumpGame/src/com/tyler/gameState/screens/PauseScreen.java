@@ -1,6 +1,7 @@
 package com.tyler.gameState.screens;
 
 import com.tyler.gameObjects.Handler;
+import com.tyler.gameState.GameStateManager;
 import com.tyler.main.Game;
 import javafx.scene.Node;
 import javafx.scene.Scene;
@@ -13,6 +14,7 @@ public class PauseScreen {
     // Import Classes
     Game game;
     Handler handler;
+    GameStateManager gsm;
 
     // Initialize Scene
     public Scene pauseScene;
@@ -23,9 +25,10 @@ public class PauseScreen {
 
 
     // Constructor
-    public PauseScreen (Game game, Handler handler) {
+    public PauseScreen (Game game, Handler handler, GameStateManager gsm) {
         this.game = game;
         this.handler = handler;
+        this.gsm = gsm;
 
         // Call Panes
         pausePane = new StackPane();

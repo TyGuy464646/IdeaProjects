@@ -1,7 +1,10 @@
 package com.tyler.gameState.screens;
 
 import com.tyler.gameObjects.Handler;
+import com.tyler.gameState.GameStateManager;
 import com.tyler.main.Game;
+import com.tyler.userInterface.Button;
+import javafx.application.Platform;
 import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.layout.Pane;
@@ -13,9 +16,14 @@ public class TitleScreen {
     // Import Classes
     Game game;
     Handler handler;
+    GameStateManager gsm;
 
     // Initialize Scene
     public Scene titleScene;
+
+    // Initialize Buttons
+    Button startButton = new Button("Start", Button.titleScreenStyle, 500, 400);
+    Button exitButton = new Button("Exit", Button.titleScreenStyle, 500, 475);
 
     // Initialize Panes
     private StackPane titlePane;
@@ -23,9 +31,10 @@ public class TitleScreen {
 
 
     // Constructor
-    public TitleScreen(Game game, Handler handler) {
+    public TitleScreen(Game game, Handler handler, GameStateManager gsm) {
         this.game = game;
         this.handler = handler;
+        this.gsm = gsm;
 
         // Call Panes
         titlePane = new StackPane();
@@ -36,14 +45,21 @@ public class TitleScreen {
 
         // Call Scene
         titleScene = new Scene(titlePane, game.getScreenWidth(), game.getScreenHeight(), Color.WHITE);
+
+        // Add Buttons
+        startButton.setAction(() -> {
+            gsm.setPlayTitleScreen(false);
+            gsm.setPlayGameScreen(true);
+        });
+        exitButton.setAction(() -> {
+            Platform.exit();
+        });
+        titleUserInterfacePane.getChildren().addAll(startButton, exitButton);
     }
 
     // Methods
     public void addTitleBackgroundPane(Node node) {
         titleBackgroundPane.getChildren().add(node);
-    }
-    public void addTitleBackgroundPane(Node[] nodes) {
-        titleBackgroundPane.getChildren().addAll(nodes);
     }
     public void removeTitleBackgroundPane(Node node) {
         titleBackgroundPane.getChildren().remove(node);
@@ -52,7 +68,6 @@ public class TitleScreen {
     public void addTitleUserInterfacePane(Node node) {
         titleUserInterfacePane.getChildren().add(node);
     }
-    public void addTitleUserInterfacePane(Node[] nodes) { titleUserInterfacePane.getChildren().addAll(nodes); }
     public void removeTitleUserInterfacePane(Node node) {
         titleUserInterfacePane.getChildren().remove(node);
     }

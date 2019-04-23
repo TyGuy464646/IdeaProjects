@@ -37,9 +37,6 @@ public class Player extends GameObject {
     }
 
     public void tick() {
-        x += velX;
-        y += velY;
-
         player.setX(x);
         player.setY(y);
     }
@@ -81,6 +78,9 @@ public class Player extends GameObject {
     }
 
     public void physicsTick() {
+        x += velX;
+        y += velY;
+
         for (int i = 0; i < handler.object.size(); i++) {
             GameObject tempObject = handler.object.get(i);
 

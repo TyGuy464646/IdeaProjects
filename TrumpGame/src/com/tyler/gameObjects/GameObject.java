@@ -1,12 +1,8 @@
 package com.tyler.gameObjects;
 
-import com.tyler.main.Game;
-
 public abstract class GameObject {
 
     // Variables
-    Game game;
-
     protected int x, y;
     protected int width, height;
     protected double velX, velY;

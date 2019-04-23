@@ -3,6 +3,7 @@ package com.tyler.main;
 import com.tyler.gameObjects.Handler;
 import com.tyler.gameState.GameStateManager;
 import com.tyler.gameState.screens.GameScreen;
+import com.tyler.gameState.screens.LoadingScreen;
 import com.tyler.gameState.screens.PauseScreen;
 import com.tyler.gameState.screens.TitleScreen;
 import javafx.application.Application;
@@ -13,9 +14,15 @@ import javafx.stage.Stage;
 
 public class Game extends Application {
 
+    // Initialize Stage
+    public Stage stage;
+
     // Initialize Screen Width / Height
-    public int screenHeight = 600;
-    public int screenWidth = 800;
+    public static int screenHeight = 600;
+    public static int screenWidth = 800;
+
+    // Initialize Paused
+    public static boolean paused = false;
 
     // Import Classes
     private GameTimer timer;
@@ -23,9 +30,10 @@ public class Game extends Application {
     private GameStateManager gsm;
 
     // Initialize Screens
-    private TitleScreen titleScreen;
-    private GameScreen gameScreen;
-    private PauseScreen pauseScreen;
+    public TitleScreen titleScreen;
+    public GameScreen gameScreen;
+    public PauseScreen pauseScreen;
+    public LoadingScreen loadingScreen;
 
     // Initialize FPS Label
     public Label fpsLabel;
@@ -33,15 +41,19 @@ public class Game extends Application {
 
     @Override
     public void start (Stage stage) throws Exception {
+        // Universal Stage
+        this.stage = stage;
+
         // Call the Classes
         timer = new GameTimer(this);
         handler = new Handler();
-        gsm = new GameStateManager();
+        gsm = new GameStateManager(this);
 
         // Call Screens
-        titleScreen = new TitleScreen(this, handler);
-        gameScreen = new GameScreen(this, handler);
-        pauseScreen = new PauseScreen(this, handler);
+        titleScreen = new TitleScreen(this, handler, gsm);
+        gameScreen = new GameScreen(this, handler, gsm);
+        pauseScreen = new PauseScreen(this, handler, gsm);
+        loadingScreen = new LoadingScreen(this, handler, gsm);
 
         // FPS Label
         fpsLabel = new Label();
@@ -93,14 +105,7 @@ public class Game extends Application {
             }
         });
 
-        // Set Scene
-        if (gsm.isPlayTitleScreen()) {
-            stage.setScene(titleScreen.setScene());
-        } else if (gsm.isPlayPauseScreen()) {
-            stage.setScene(pauseScreen.setScene());
-        } else {
-            stage.setScene(gameScreen.setScene());
-        }
+        stage.setScene(titleScreen.setScene());
 
         // Show the Stage
         stage.setTitle("Trump Game");
@@ -111,6 +116,10 @@ public class Game extends Application {
     // Tick Methods
     public void tick() {
         handler.tick();
+    }
+
+    public void gsmTick() {
+        gsm.tick();
     }
 
     // Getters
