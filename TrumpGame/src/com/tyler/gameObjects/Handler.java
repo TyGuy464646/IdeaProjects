@@ -8,11 +8,12 @@ public class Handler {
     public ArrayList<GameObject> object = new ArrayList<GameObject>();
 
     // Initialize Input Booleans
-    public boolean left = false;
-    public boolean down = false;
-    public boolean right = false;
-    public boolean up = false;
-    public boolean space = false;
+    public static boolean left = false;
+    public static boolean down = false;
+    public static boolean right = false;
+    public static boolean up = false;
+    public static boolean space = false;
+    public static boolean escape = false;
 
     public boolean primaryClick = false;
     public boolean secondaryClick = false;
@@ -71,5 +72,12 @@ public class Handler {
     }
     public void setSpace (boolean space) {
         this.space = space;
+    }
+
+    public boolean isEscape () {
+        return escape;
+    }
+    public void setEscape (boolean escape) {
+        this.escape = escape;
     }
 }

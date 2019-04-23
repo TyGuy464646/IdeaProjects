@@ -1,11 +1,13 @@
 package com.tyler.gameState;
 
+import com.tyler.gameObjects.Handler;
 import com.tyler.main.Game;
 
 public class GameStateManager {
 
     // Call Classes
     Game game;
+    Handler handler;
 
     // Initialize Scene Booleans
     public boolean playTitleScreen;
@@ -15,8 +17,9 @@ public class GameStateManager {
 
 
     // Constructor
-    public GameStateManager(Game game) {
+    public GameStateManager(Game game, Handler handler) {
         this.game = game;
+        this.handler = handler;
 
         playTitleScreen = true;
         playGameScreen = false;
@@ -26,6 +29,14 @@ public class GameStateManager {
 
     // Methods
     public void tick() {
+        if (handler.isEscape()) {
+            if (!game.paused) {
+                game.paused = true;
+            } else {
+                game.paused = false;
+            }
+        }
+
         if (playTitleScreen) {
             game.stage.setScene(game.titleScreen.setScene());
         } else if (playGameScreen) {
@@ -35,6 +46,7 @@ public class GameStateManager {
         } else {
             game.stage.setScene(game.loadingScreen.setScene());
         }
+
     }
 
     // Getters and Setters

@@ -47,7 +47,7 @@ public class Game extends Application {
         // Call the Classes
         timer = new GameTimer(this);
         handler = new Handler();
-        gsm = new GameStateManager(this);
+        gsm = new GameStateManager(this, handler);
 
         // Call Screens
         titleScreen = new TitleScreen(this, handler, gsm);
@@ -79,6 +79,9 @@ public class Game extends Application {
                     case SPACE:
                         handler.setSpace(true);
                         break;
+                    case ESCAPE:
+                        handler.setEscape(true);
+                        break;
                 }
             }
         });
@@ -100,6 +103,9 @@ public class Game extends Application {
                         break;
                     case SPACE:
                         handler.setSpace(false);
+                        break;
+                    case ESCAPE:
+                        handler.setEscape(false);
                         break;
                 }
             }
