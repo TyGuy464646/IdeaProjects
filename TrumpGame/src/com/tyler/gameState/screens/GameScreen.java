@@ -45,8 +45,10 @@ public class GameScreen {
         gameScene = new Scene(gamePane, game.getScreenWidth(), game.getScreenHeight(), Color.WHITE);
 
         // Add Objects
-        handler.addObject(new Block(this, 200, 100, 50, 50, ID.Block));
-        handler.addObject(new Player(handler, this, 50, 50, 25, 25, 5, ID.Player));
+        for (int i = 0; i <= game.screenWidth - 50; i += 50) {
+            handler.addObject(new Block(this, i, 540, 50, 50, ID.Block));
+        }
+        handler.addObject(new Player(handler, this, 50, 50, 25, 25, 7, ID.Player));
 
     }
 

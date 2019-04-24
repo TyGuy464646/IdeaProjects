@@ -18,7 +18,7 @@ public class Block extends GameObject {
     public Color blockColor = Color.GREY;
 
 
-    public Block(GameScreen gameScreen, int x, int y, int width, int height, ID id) {
+    public Block(GameScreen gameScreen, float x, float y, int width, int height, ID id) {
         super(x, y, width, height, id);
         this.gameScreen = gameScreen;
 

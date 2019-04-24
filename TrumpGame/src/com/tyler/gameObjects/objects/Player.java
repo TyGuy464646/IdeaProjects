@@ -22,9 +22,11 @@ public class Player extends GameObject {
     public Color playerColor = Color.RED;
     public int playerBaseSpeed,
                playerSpeed;
+    public static float gravity = 0.1f;
+    public final float terminalVelocity = 10f;
 
 
-    public Player(Handler handler, GameScreen gameScreen, int x, int y, int width, int height, int speed, ID id) {
+    public Player(Handler handler, GameScreen gameScreen, float x, float y, int width, int height, int speed, ID id) {
         super(x, y, width, height, id);
         this.handler = handler;
         this.gameScreen = gameScreen;
