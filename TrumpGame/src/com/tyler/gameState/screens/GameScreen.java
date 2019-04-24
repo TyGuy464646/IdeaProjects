@@ -23,7 +23,7 @@ public class GameScreen {
     public Scene gameScene;
 
     // Initialize Panes
-    private StackPane gamePane;
+    private StackPane gamePane, rootPane;
     private Pane gameBackgroundPane, gameSpritePane, gameUserInterfacePane;
 
 
@@ -35,14 +35,16 @@ public class GameScreen {
 
         // Call Panes
         gamePane = new StackPane();
+        rootPane = new StackPane();
         gameBackgroundPane = new Pane();
         gameSpritePane = new Pane();
         gameUserInterfacePane = new Pane();
 
         gamePane.getChildren().addAll(gameBackgroundPane, gameSpritePane, gameUserInterfacePane);
+        rootPane.getChildren().addAll(gamePane, game.pauseScreen.getPausePane());
 
         // Call Scene
-        gameScene = new Scene(gamePane, game.getScreenWidth(), game.getScreenHeight(), Color.WHITE);
+        gameScene = new Scene(rootPane, game.getScreenWidth(), game.getScreenHeight(), Color.WHITE);
 
         // Add Objects
         for (int i = 0; i <= game.screenWidth - 50; i += 50) {

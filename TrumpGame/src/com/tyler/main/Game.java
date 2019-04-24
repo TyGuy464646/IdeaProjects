@@ -22,7 +22,7 @@ public class Game extends Application {
     public static int screenWidth = 800;
 
     // Initialize Paused
-    public static boolean paused = false;
+    public static boolean paused = true;
 
     // Import Classes
     private GameTimer timer;
@@ -51,8 +51,8 @@ public class Game extends Application {
 
         // Call Screens
         titleScreen = new TitleScreen(this, handler, gsm);
-        gameScreen = new GameScreen(this, handler, gsm);
         pauseScreen = new PauseScreen(this, handler, gsm);
+        gameScreen = new GameScreen(this, handler, gsm);
         loadingScreen = new LoadingScreen(this, handler, gsm);
 
         // FPS Label
@@ -120,11 +120,11 @@ public class Game extends Application {
     }
 
     // Tick Methods
-    public void tick() {
+    public void tick () {
         handler.tick();
     }
 
-    public void gsmTick() {
+    public void gsmTick () {
         gsm.tick();
     }
 
@@ -132,6 +132,7 @@ public class Game extends Application {
     public int getScreenHeight () {
         return screenHeight;
     }
+
     public int getScreenWidth () {
         return screenWidth;
     }

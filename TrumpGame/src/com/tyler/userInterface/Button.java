@@ -15,27 +15,48 @@ public class Button extends StackPane {
     private Label label;
     private Runnable action;
 
+    // Variables
+    private String screen;
 
     // Initiate Images
-    private static Image defaultImage, hoverImage, pressedImage;
+    private static Image titleDefaultImage, titleHoverImage, titlePressedImage;
+    private static Image pauseDefaultImage, pauseHoverImage, pausePressedImage;
     private static boolean initialized = false;
 
     // Variables
     public static String titleScreenStyle = "-fx-text-fill: white; -fx-font-size: 30px;";
+    public static String pauseScreenStyle = "-fx-text-fill: white; -fx-font-size: 15px;";
 
 
     // Constructor
-    public Button(String text, String style, int x, int y) {
+    public Button(String screen, String text, String style, int x, int y) {
+        this.screen = screen;
+
         if (!initialized) {
             loadImages();
         }
 
-        imageView = new ImageView(defaultImage);
+        switch (screen) {
+            case "titleScreen":
+                imageView = new ImageView(titleDefaultImage);
+                break;
+            case "pauseScreen":
+                imageView = new ImageView(pauseDefaultImage);
+                break;
+        }
         setOnMousePressed(new EventHandler<MouseEvent>() {
             @Override
             public void handle (MouseEvent event) {
                 if (event.getButton() == MouseButton.PRIMARY) {
-                    imageView.setImage(pressedImage);
+                    switch (screen) {
+                        case "titleScreen":
+                            imageView.setImage(titlePressedImage);
+                            break;
+                        case "pauseScreen":
+                            imageView.setImage(pausePressedImage);
+                            break;
+                    }
+
                 }
             }
         });
@@ -46,20 +67,40 @@ public class Button extends StackPane {
                     if (action != null) {
                         action.run();
                     }
-                    imageView.setImage(hoverImage);
+                    switch (screen) {
+                        case "titleScreen":
+                            imageView.setImage(titleHoverImage);
+                            break;
+                        case "pauseScreen":
+                            imageView.setImage(pauseHoverImage);
+                    }
                 }
             }
         });
         setOnMouseEntered(new EventHandler<MouseEvent>() {
             @Override
             public void handle (MouseEvent event) {
-                imageView.setImage(hoverImage);
+                switch (screen) {
+                    case "titleScreen":
+                        imageView.setImage(titleHoverImage);
+                        break;
+                    case "pauseScreen":
+                        imageView.setImage(pauseHoverImage);
+                        break;
+                }
             }
         });
         setOnMouseExited(new EventHandler<MouseEvent>() {
             @Override
             public void handle (MouseEvent event) {
-                imageView.setImage(defaultImage);
+                switch (screen) {
+                    case "titleScreen":
+                        imageView.setImage(titleDefaultImage);
+                        break;
+                    case "pauseScreen":
+                        imageView.setImage(pauseDefaultImage);
+                        break;
+                }
             }
         });
 
@@ -72,9 +113,13 @@ public class Button extends StackPane {
     }
 
     private static void loadImages() {
-        defaultImage = new Image("/TemplateButton/ButtonDefault.png");
-        hoverImage = new Image("/TemplateButton/ButtonHover.png");
-        pressedImage = new Image("/TemplateButton/ButtonPressed.png");
+        titleDefaultImage = new Image("/Button/TitleButton/ButtonDefault.png");
+        titleHoverImage = new Image("/Button/TitleButton/ButtonHover.png");
+        titlePressedImage = new Image("/Button/TitleButton/ButtonPressed.png");
+
+        pauseDefaultImage = new Image("Button/PauseButton/ButtonDefault.png");
+        pauseHoverImage = new Image("Button/PauseButton/ButtonHover.png");
+        pausePressedImage = new Image("Button/PauseButton/ButtonPressed.png");
 
         initialized = true;
     }
@@ -90,5 +135,9 @@ public class Button extends StackPane {
 
     public String getTitleScreenStyle () {
         return titleScreenStyle;
+    }
+
+    public String getPauseScreenStyle () {
+        return pauseScreenStyle;
     }
 }

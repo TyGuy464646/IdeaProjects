@@ -22,8 +22,8 @@ public class TitleScreen {
     public Scene titleScene;
 
     // Initialize Buttons
-    Button startButton = new Button("Start", Button.titleScreenStyle, game.screenWidth / 2 - 100, 100);
-    Button exitButton = new Button("Exit", Button.titleScreenStyle, game.screenWidth / 2 - 100, 175);
+    Button startButton = new Button("titleScreen", "Start", Button.titleScreenStyle, game.screenWidth / 2 - 100, 100);
+    Button quitButton = new Button("titleScreen", "Quit", Button.titleScreenStyle, game.screenWidth / 2 - 100, 175);
 
     // Initialize Panes
     private StackPane titlePane;
@@ -48,13 +48,14 @@ public class TitleScreen {
 
         // Add Buttons
         startButton.setAction(() -> {
+            game.paused = false;
             gsm.setPlayTitleScreen(false);
             gsm.setPlayGameScreen(true);
         });
-        exitButton.setAction(() -> {
+        quitButton.setAction(() -> {
             Platform.exit();
         });
-        titleUserInterfacePane.getChildren().addAll(startButton, exitButton);
+        titleUserInterfacePane.getChildren().addAll(startButton, quitButton);
     }
 
     // Methods
