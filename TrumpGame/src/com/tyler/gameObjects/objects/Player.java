@@ -19,20 +19,20 @@ public class Player extends GameObject {
     private Rectangle player;
 
     // Initialize Player Variables
-    public Color playerColor = Color.RED;
-    public int playerBaseSpeed,
-               playerSpeed;
-    public static float gravity = 0.1f;
-    public final float terminalVelocity = 10f;
+    private Color playerColor = Color.RED;
+    public float runRate = .5f;
+    public final float maxRunSpeed = 5f;
+    private float accelX = 0, accelY = 0;
+    private static float gravity = 0.5f;
+    private float stoppingThreshold = 0.05f;
+    public float drag = 0.2f;
+    public boolean canJump = true;
 
 
-    public Player(Handler handler, GameScreen gameScreen, float x, float y, int width, int height, int speed, ID id) {
+    public Player(Handler handler, GameScreen gameScreen, float x, float y, int width, int height, ID id) {
         super(x, y, width, height, id);
         this.handler = handler;
         this.gameScreen = gameScreen;
-
-        this.playerBaseSpeed = speed;
-        this.playerSpeed = this.playerBaseSpeed;
 
         player = new Rectangle(width, height, playerColor);
         gameScreen.addGameSpritePane(player);
@@ -45,41 +45,40 @@ public class Player extends GameObject {
 
     public void inputTick() {
         if (handler.isLeft() || handler.isRight()) {
-            if (handler.isLeft()) {
-                velX = -playerSpeed;
-            }
-            if (handler.isRight()) {
-                velX = playerSpeed;
-            }
-        } else {
-            velX = 0;
-        }
-
-        if (handler.isUp() || handler.isDown()) {
-            if (handler.isUp()) {
-                velY = -playerSpeed;
-            }
-            if (handler.isDown()) {
-                velY = playerSpeed;
+            if (handler.isLeft() && velX >= -maxRunSpeed) {
+                accelX = -runRate;
+            } else if (handler.isRight() && velX <= maxRunSpeed) {
+                accelX = runRate;
+            } else {
+                accelX = 0;
             }
         } else {
-            velY = 0;
+            accelX = 0;
+            velX *= 1 - drag;
+            if (Math.abs(velX) < stoppingThreshold) {
+                velX = 0;
+            }
         }
-
         if (handler.isLeft() && handler.isRight()) {
-            velX = 0;
-        }
-        if (handler.isUp() && handler.isDown()) {
-            velY = 0;
+            accelX = 0;
+            velX *= 1 - drag;
+            if (Math.abs(velX) < stoppingThreshold) {
+                velX = 0;
+            }
         }
 
-        if (velX != 0 && velY != 0) {
-            velX /= Math.sqrt(2);
-            velY /= Math.sqrt(2);
+        if (handler.isSpace() && canJump) {
+            velY = -14;
+            canJump = false;
         }
     }
 
     public void physicsTick() {
+        velX += accelX;
+        velY += accelY;
+
+        velY += gravity;
+
         x += velX;
         y += velY;
 
@@ -91,25 +90,40 @@ public class Player extends GameObject {
                 double xOverlap = Math.min(x + width, tempObject.getX() + tempObject.getWidth()) - Math.max(x, tempObject.getX());
                 double yOverlap = Math.min(y + height, tempObject.getY() + tempObject.getHeight()) - Math.max(y, tempObject.getY());
 
+                Block block = (Block) tempObject;
+
                 if (xOverlap > 0 && yOverlap > 0) {
                     if (xOverlap > yOverlap) {
                         double playerCenter = y + height / 2;
                         double blockCenter = tempObject.getY() + tempObject.getHeight() / 2;
 
+                        // Top of platform
                         if (playerCenter < blockCenter) {
-                            y = tempObject.getY() - height;
-                        } else {
-                            y = tempObject.getY() + tempObject.getHeight();
+                            if (!block.disableCollisionUp) {
+                                y = tempObject.getY() - height;
+                                velY = 0;
+                                canJump = true;
+                            }
+                        } else { // Bottom of platform
+                            if (!block.disableCollisionBottom) {
+                                y = tempObject.getY() + tempObject.getHeight();
+                                velY = 0;
+                            }
                         }
                     }
                     if (yOverlap > xOverlap) {
                         double playerCenter = x + width / 2;
                         double blockCenter = tempObject.getX() + tempObject.getWidth() / 2;
 
+                        // Left of Platform
                         if (playerCenter < blockCenter) {
-                            x = tempObject.getX() - width;
-                        } else if (playerCenter > blockCenter) {
-                            x = tempObject.getX() + tempObject.getWidth();
+                            if (!block.disableCollisionLeft) {
+                                x = tempObject.getX() - width;
+                            }
+                        } else { // Right of Platforms
+                            if (!block.disableCollisionRight) {
+                                x = tempObject.getX() + tempObject.getWidth();
+                            }
                         }
                     }
                 }

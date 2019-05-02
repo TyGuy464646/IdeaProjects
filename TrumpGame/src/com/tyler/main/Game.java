@@ -27,7 +27,7 @@ public class Game extends Application {
     // Import Classes
     private GameTimer timer;
     private Handler handler;
-    private GameStateManager gsm;
+    public GameStateManager gsm;
 
     // Initialize Screens
     public TitleScreen titleScreen;
@@ -50,9 +50,9 @@ public class Game extends Application {
         gsm = new GameStateManager(this, handler);
 
         // Call Screens
-        titleScreen = new TitleScreen(this, handler, gsm);
-        pauseScreen = new PauseScreen(this, handler, gsm);
-        gameScreen = new GameScreen(this, handler, gsm);
+        titleScreen = new TitleScreen(this, handler);
+        pauseScreen = new PauseScreen(this, handler);
+        gameScreen = new GameScreen(this, handler);
         loadingScreen = new LoadingScreen(this, handler, gsm);
 
         // FPS Label

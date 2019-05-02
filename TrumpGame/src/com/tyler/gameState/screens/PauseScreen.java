@@ -19,7 +19,6 @@ public class PauseScreen {
     // Import Classes
     Game game;
     Handler handler;
-    GameStateManager gsm;
 
     // Initialize Buttons
     Button resumeButton = new Button("pauseScreen", "Resume", Button.pauseScreenStyle, 60, 100);
@@ -35,10 +34,9 @@ public class PauseScreen {
 
 
     // Constructor
-    public PauseScreen (Game game, Handler handler, GameStateManager gsm) {
+    public PauseScreen (Game game, Handler handler) {
         this.game = game;
         this.handler = handler;
-        this.gsm = gsm;
 
         // Call Panes
         pausePane = new StackPane();
@@ -60,8 +58,8 @@ public class PauseScreen {
         });
         exitButton.setAction(() -> {
             game.paused = true;
-            gsm.setPlayGameScreen(false);
-            gsm.setPlayTitleScreen(true);
+            game.gsm.setPlayGameScreen(false);
+            game.gsm.setPlayTitleScreen(true);
         });
         pauseUserInterfacePane.getChildren().addAll(resumeButton, exitButton);
 

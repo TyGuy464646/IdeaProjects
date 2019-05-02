@@ -8,6 +8,12 @@ import javafx.scene.shape.Rectangle;
 
 public class Block extends GameObject {
 
+    // Variables
+    public boolean disableCollisionUp = false;
+    public boolean disableCollisionLeft = false;
+    public boolean disableCollisionBottom = false;
+    public boolean disableCollisionRight = false;
+
     // Initialize Screens
     private GameScreen gameScreen;
 

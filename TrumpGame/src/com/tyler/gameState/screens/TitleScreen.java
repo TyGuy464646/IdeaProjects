@@ -16,7 +16,6 @@ public class TitleScreen {
     // Import Classes
     Game game;
     Handler handler;
-    GameStateManager gsm;
 
     // Initialize Scene
     public Scene titleScene;
@@ -31,10 +30,9 @@ public class TitleScreen {
 
 
     // Constructor
-    public TitleScreen(Game game, Handler handler, GameStateManager gsm) {
+    public TitleScreen(Game game, Handler handler) {
         this.game = game;
         this.handler = handler;
-        this.gsm = gsm;
 
         // Call Panes
         titlePane = new StackPane();
@@ -49,8 +47,8 @@ public class TitleScreen {
         // Add Buttons
         startButton.setAction(() -> {
             game.paused = false;
-            gsm.setPlayTitleScreen(false);
-            gsm.setPlayGameScreen(true);
+            game.gsm.setPlayTitleScreen(false);
+            game.gsm.setPlayGameScreen(true);
         });
         quitButton.setAction(() -> {
             Platform.exit();

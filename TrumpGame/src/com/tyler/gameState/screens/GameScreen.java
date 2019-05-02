@@ -8,6 +8,8 @@ import com.tyler.gameState.GameStateManager;
 import com.tyler.main.Game;
 import javafx.scene.Node;
 import javafx.scene.Scene;
+import javafx.scene.image.Image;
+import javafx.scene.image.PixelReader;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.StackPane;
 import javafx.scene.paint.Color;
@@ -17,7 +19,6 @@ public class GameScreen {
     // Import Classes
     Game game;
     Handler handler;
-    GameStateManager gsm;
 
     // Initialize Scene
     public Scene gameScene;
@@ -28,10 +29,9 @@ public class GameScreen {
 
 
     // Constructor
-    public GameScreen (Game game, Handler handler, GameStateManager gsm) {
+    public GameScreen (Game game, Handler handler) {
         this.game = game;
         this.handler = handler;
-        this.gsm = gsm;
 
         // Call Panes
         gamePane = new StackPane();
@@ -47,10 +47,47 @@ public class GameScreen {
         gameScene = new Scene(rootPane, game.getScreenWidth(), game.getScreenHeight(), Color.WHITE);
 
         // Add Objects
-        for (int i = 0; i <= game.screenWidth - 50; i += 50) {
-            handler.addObject(new Block(this, i, 540, 50, 50, ID.Block));
+        final int red = 0xffff0000;
+        final int green = 0xff00ff00;
+        final int blue = 0xff0000ff;
+
+        Image level1 = new Image("Levels/level1.png");
+        PixelReader pr = level1.getPixelReader();
+
+        for (int yy = 0; yy < level1.getHeight(); yy++) {
+            for (int xx = 0; xx < level1.getWidth(); xx++) {
+                switch (pr.getArgb(xx, yy)) {
+                    case red:
+                        Block block = new Block(this, xx * 32, yy * 32, 32, 32, ID.Block);
+                        handler.addObject(block);
+
+                        if (xx + 1 < level1.getWidth() - 1) {
+                            if (pr.getArgb(xx + 1, yy) == red) {
+                                block.disableCollisionRight = true;
+                            }
+                        }
+                        if (xx - 1 > 0) {
+                            if (pr.getArgb(xx - 1, yy) == red) {
+                                block.disableCollisionLeft = true;
+                            }
+                        }
+                        if (yy + 1 < level1.getHeight() - 1) {
+                            if (pr.getArgb(xx, yy + 1) == red) {
+                                block.disableCollisionBottom = true;
+                            }
+                        }
+                        if (yy - 1 > 0) {
+                            if (pr.getArgb(xx, yy - 1) == red) {
+                                block.disableCollisionUp = true;
+                            }
+                        }
+                        break;
+                    case blue:
+                        handler.addObject(new Player(handler, this, xx * 32, yy * 32, 32, 48, ID.Player));
+                        break;
+                }
+            }
         }
-        handler.addObject(new Player(handler, this, 50, 50, 25, 25, 7, ID.Player));
 
     }
 
