@@ -57,6 +57,7 @@ public class Game extends Application {
 
         // FPS Label
         fpsLabel = new Label();
+        fpsLabel.setLayoutX(700);
         gameScreen.addGameUserInterfacePane(fpsLabel);
 
         // Key Input Handler

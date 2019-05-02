@@ -6,6 +6,7 @@ import com.tyler.gameObjects.objects.Block;
 import com.tyler.gameObjects.objects.Player;
 import com.tyler.gameState.GameStateManager;
 import com.tyler.main.Game;
+import com.tyler.userInterface.HealthBar;
 import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.image.Image;
@@ -19,6 +20,7 @@ public class GameScreen {
     // Import Classes
     Game game;
     Handler handler;
+    HealthBar healthBar = new HealthBar(5, 5);
 
     // Initialize Scene
     public Scene gameScene;
@@ -88,6 +90,7 @@ public class GameScreen {
                 }
             }
         }
+        gameUserInterfacePane.getChildren().add(healthBar);
 
     }
 

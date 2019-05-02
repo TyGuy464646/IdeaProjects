@@ -43,7 +43,7 @@ public class LoadingScreen {
         loadingPane.getChildren().add(loading);
 
         // Call Scene
-        loadingScene = new Scene(loadingPane, game.getScreenWidth(), game.getScreenHeight(), Color.WHITE);
+        loadingScene = new Scene(loadingPane, game.getScreenWidth(), game.getScreenHeight(), Color.RED);
 
     }
 

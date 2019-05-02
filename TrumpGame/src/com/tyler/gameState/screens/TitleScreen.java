@@ -10,6 +10,7 @@ import javafx.scene.Scene;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.StackPane;
 import javafx.scene.paint.Color;
+import javafx.scene.shape.Rectangle;
 
 public class TitleScreen {
 
@@ -21,8 +22,9 @@ public class TitleScreen {
     public Scene titleScene;
 
     // Initialize Buttons
-    Button startButton = new Button("titleScreen", "Start", Button.titleScreenStyle, game.screenWidth / 2 - 100, 100);
-    Button quitButton = new Button("titleScreen", "Quit", Button.titleScreenStyle, game.screenWidth / 2 - 100, 175);
+    private Button startButton = new Button("titleScreen", "Start", Button.titleScreenStyle, game.screenWidth / 2 - 100, 100);
+    private Button quitButton = new Button("titleScreen", "Quit", Button.titleScreenStyle, game.screenWidth / 2 - 100, 175);
+    private Rectangle backgroundColor;
 
     // Initialize Panes
     private StackPane titlePane;
@@ -34,15 +36,19 @@ public class TitleScreen {
         this.game = game;
         this.handler = handler;
 
+        // Call Rectangle
+        backgroundColor = new Rectangle(game.getScreenWidth(), game.getScreenHeight(), Color.RED);
+
         // Call Panes
         titlePane = new StackPane();
         titleBackgroundPane = new Pane();
         titleUserInterfacePane = new Pane();
 
+        // Add the sub-panes to the main pane
         titlePane.getChildren().addAll(titleBackgroundPane, titleUserInterfacePane);
 
         // Call Scene
-        titleScene = new Scene(titlePane, game.getScreenWidth(), game.getScreenHeight(), Color.WHITE);
+        titleScene = new Scene(titlePane, game.getScreenWidth(), game.getScreenHeight(), Color.RED);
 
         // Add Buttons
         startButton.setAction(() -> {
@@ -53,6 +59,9 @@ public class TitleScreen {
         quitButton.setAction(() -> {
             Platform.exit();
         });
+
+        // Add nodes to panes
+        titleBackgroundPane.getChildren().add(backgroundColor);
         titleUserInterfacePane.getChildren().addAll(startButton, quitButton);
     }
 
