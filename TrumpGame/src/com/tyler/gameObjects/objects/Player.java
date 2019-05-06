@@ -4,22 +4,24 @@ import com.tyler.gameObjects.GameObject;
 import com.tyler.gameObjects.Handler;
 import com.tyler.gameObjects.ID;
 import com.tyler.gameState.screens.GameScreen;
+import com.tyler.image.SpriteSheet;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.paint.Color;
-import javafx.scene.shape.Rectangle;
 
 public class Player extends GameObject {
 
     // Initialize Classes
     private Handler handler;
+    private SpriteSheet player;
 
     // Initialize Screens
     private GameScreen gameScreen;
 
     // Initialize player
-    private Rectangle player;
+    private Image image = new Image("/Sprites/Trump/TrumpSprite.png");
 
     // Initialize Player Variables
-    private Color playerColor = Color.RED;
     public float runRate = .5f;
     public final float maxRunSpeed = 5f;
     private float accelX = 0, accelY = 0;
@@ -34,13 +36,15 @@ public class Player extends GameObject {
         this.handler = handler;
         this.gameScreen = gameScreen;
 
-        player = new Rectangle(width, height, playerColor);
-        gameScreen.addGameSpritePane(player);
+        player = new SpriteSheet(image);
+        player.grabImage(1, 1, width, height);
+
+        gameScreen.addGameSpritePane(player.getImageView());
     }
 
     public void tick() {
-        player.setX(x);
-        player.setY(y);
+        player.getImageView().setX(x);
+        player.getImageView().setY(y);
     }
 
     public void inputTick() {

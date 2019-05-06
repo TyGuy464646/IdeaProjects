@@ -60,7 +60,7 @@ public class GameScreen {
             for (int xx = 0; xx < level1.getWidth(); xx++) {
                 switch (pr.getArgb(xx, yy)) {
                     case red:
-                        Block block = new Block(this, xx * 32, yy * 32, 32, 32, ID.Block);
+                        Block block = new Block(this, xx * 40, yy * 40, 40, 40, ID.Block);
                         handler.addObject(block);
 
                         if (xx + 1 < level1.getWidth() - 1) {
@@ -85,7 +85,7 @@ public class GameScreen {
                         }
                         break;
                     case blue:
-                        handler.addObject(new Player(handler, this, xx * 32, yy * 32, 32, 48, ID.Player));
+                        handler.addObject(new Player(handler, this, xx * 40, yy * 40, 60, 76, ID.Player));
                         break;
                 }
             }
