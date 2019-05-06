@@ -4,22 +4,19 @@ import com.tyler.gameObjects.GameObject;
 import com.tyler.gameObjects.Handler;
 import com.tyler.gameObjects.ID;
 import com.tyler.gameState.screens.GameScreen;
-import com.tyler.image.SpriteSheet;
-import javafx.scene.image.Image;
+import com.tyler.handlers.Textures;
 import javafx.scene.image.ImageView;
 
 public class Player extends GameObject {
 
     // Initialize Classes
     private Handler handler;
-    private SpriteSheet spriteSheet;
 
     // Initialize Screens
     private GameScreen gameScreen;
 
-    // Initialize player
-    private Image image = new Image("/Sprites/Trump/TrumpSprite.png");
-    private ImageView player;
+    // Initialize Player
+    private ImageView player = textures.playerSprite.grabImage(1, 1, width, height);
 
     // Initialize Player Variables
     public float runRate = .5f;
@@ -32,13 +29,10 @@ public class Player extends GameObject {
 
 
     // Constructor
-    public Player(Handler handler, GameScreen gameScreen, float x, float y, int width, int height, ID id) {
-        super(x, y, width, height, id);
+    public Player(Handler handler, GameScreen gameScreen, Textures textures, float x, float y, int width, int height, ID id) {
+        super(x, y, width, height, id, textures);
         this.handler = handler;
         this.gameScreen = gameScreen;
-
-        spriteSheet = new SpriteSheet(image);
-        player = spriteSheet.grabImage(1, 1, width, height);
 
         gameScreen.addGameSpritePane(player);
     }

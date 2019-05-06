@@ -3,6 +3,7 @@ package com.tyler.main;
 import com.tyler.gameObjects.Handler;
 import com.tyler.gameState.GameStateManager;
 import com.tyler.gameState.screens.*;
+import com.tyler.handlers.Textures;
 import javafx.application.Application;
 import javafx.event.EventHandler;
 import javafx.scene.control.Label;
@@ -25,6 +26,7 @@ public class Game extends Application {
     private GameTimer timer;
     private Handler handler;
     public GameStateManager gsm;
+    public Textures textures;
 
     // Initialize Screens
     public TitleScreen titleScreen;
@@ -46,11 +48,20 @@ public class Game extends Application {
         handler = new Handler();
         gsm = new GameStateManager(this, handler);
 
+        // Load Textures
+        loadingScreen = new LoadingScreen(this, handler, gsm);
+        if (loadingScreen.isLoading) {
+            gsm.setPlayLoadingScreen(true);
+            textures = new Textures();
+            gsm.setPlayLoadingScreen(false);
+            gsm.setPlayTitleScreen(true);
+            LoadingScreen.isLoading = false;
+        }
+
         // Call Screens
         titleScreen = new TitleScreen(this, handler);
         pauseScreen = new PauseScreen(this, handler);
-        gameScreen = new GameScreen(this, handler);
-        loadingScreen = new LoadingScreen(this, handler, gsm);
+        gameScreen = new GameScreen(this, handler, textures, gsm);
 
         // FPS Label
         fpsLabel = new Label();
@@ -108,8 +119,6 @@ public class Game extends Application {
                 }
             }
         });
-
-        stage.setScene(titleScreen.setScene());
 
         // Show the Stage
         stage.setTitle("Trump Game");

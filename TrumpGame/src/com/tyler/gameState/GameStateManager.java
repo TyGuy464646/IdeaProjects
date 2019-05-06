@@ -1,13 +1,15 @@
 package com.tyler.gameState;
 
 import com.tyler.gameObjects.Handler;
+import com.tyler.handlers.Textures;
 import com.tyler.main.Game;
 
 public class GameStateManager {
 
     // Call Classes
-    Game game;
-    Handler handler;
+    private Game game;
+    private Handler handler;
+    public Textures textures;
 
     // Initialize Scene Booleans
     public static boolean playTitleScreen;
@@ -22,13 +24,22 @@ public class GameStateManager {
         this.game = game;
         this.handler = handler;
 
-        playTitleScreen = true;
+        playTitleScreen = false;
         playGameScreen = false;
-        playLoadingScreen = false;
+        playLoadingScreen = true;
     }
 
     // Methods
     public void tick () {
+        if (playTitleScreen) {
+            game.stage.setScene(game.titleScreen.setScene());
+        } else if (playGameScreen) {
+            game.stage.setScene(game.gameScreen.setScene());
+        } else if (playLoadingScreen) {
+            game.pauseScreen.getPausePane().setVisible(false);
+            game.stage.setScene(game.loadingScreen.setScene());
+        }
+
         if (playGameScreen) {
             if (handler.isEscape() && !isPressed) {
                 game.paused = !game.paused;
@@ -47,16 +58,6 @@ public class GameStateManager {
             game.pauseScreen.getPausePane().setVisible(false);
             game.fpsLabel.setVisible(true);
         }
-
-        if (playTitleScreen) {
-            game.stage.setScene(game.titleScreen.setScene());
-        } else if (playGameScreen) {
-            game.stage.setScene(game.gameScreen.setScene());
-        } else {
-            game.pauseScreen.getPausePane().setVisible(false);
-            game.stage.setScene(game.loadingScreen.setScene());
-        }
-
     }
 
     // Getters and Setters

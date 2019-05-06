@@ -4,6 +4,8 @@ import com.tyler.gameObjects.Handler;
 import com.tyler.gameObjects.ID;
 import com.tyler.gameObjects.objects.Block;
 import com.tyler.gameObjects.objects.Player;
+import com.tyler.gameState.GameStateManager;
+import com.tyler.handlers.Textures;
 import com.tyler.main.Game;
 import com.tyler.userInterface.HealthBar;
 import javafx.scene.Node;
@@ -19,6 +21,8 @@ public class GameScreen {
     // Import Classes
     Game game;
     Handler handler;
+    GameStateManager gsm;
+
     HealthBar healthBar = new HealthBar(5, 5);
 
     // Initialize Scene
@@ -28,11 +32,16 @@ public class GameScreen {
     private StackPane gamePane, rootPane;
     private Pane gameBackgroundPane, gameSpritePane, gameUserInterfacePane;
 
+    // Variables
+    public static int blockWidth = 40;
+    public static int playerWidth = 60, playerHeight = 76;
+
 
     // Constructor
-    public GameScreen (Game game, Handler handler) {
+    public GameScreen (Game game, Handler handler, Textures textures, GameStateManager gsm) {
         this.game = game;
         this.handler = handler;
+        this.gsm = gsm;
 
         // Call Panes
         gamePane = new StackPane();
@@ -59,7 +68,7 @@ public class GameScreen {
             for (int xx = 0; xx < level1.getWidth(); xx++) {
                 switch (pr.getArgb(xx, yy)) {
                     case red:
-                        Block block = new Block(this, xx * 40, yy * 40, 40, 40, ID.Block);
+                        Block block = new Block(this, textures, xx * blockWidth, yy * blockWidth, blockWidth, blockWidth, ID.Block);
                         handler.addObject(block);
 
                         if (xx + 1 < level1.getWidth() - 1) {
@@ -84,7 +93,7 @@ public class GameScreen {
                         }
                         break;
                     case blue:
-                        handler.addObject(new Player(handler, this, xx * 40, yy * 40, 60, 76, ID.Player));
+                        handler.addObject(new Player(handler, this, textures, xx * blockWidth, yy * blockWidth, playerWidth, playerHeight, ID.Player));
                         break;
                 }
             }

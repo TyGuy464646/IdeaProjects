@@ -10,22 +10,22 @@ public class SpriteSheet {
     private int spriteIncrementX;
     private int spriteIncrementY;
 
-    private final Image image;
-    private ImageView imageView;
+    private final String url;
+    private Image image;
 
 
     // Constructor
-    public SpriteSheet (Image image) {
-        this.image = image;
+    public SpriteSheet (String url) {
+        this.url = url;
 
-        imageView = new ImageView(image);
+        image = new Image(url);
     }
 
     // Methods
     public ImageView grabImage(int column, int row, int width, int height) {
         spriteIncrementX = width;
         spriteIncrementY = height;
-
+        ImageView imageView = new ImageView(image);
         imageView.setViewport(new Rectangle2D((column * spriteIncrementX) - spriteIncrementX, (row * spriteIncrementY) - spriteIncrementY, width, height));
         return imageView;
     }

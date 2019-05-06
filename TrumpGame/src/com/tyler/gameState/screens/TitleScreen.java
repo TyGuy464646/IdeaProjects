@@ -1,7 +1,6 @@
 package com.tyler.gameState.screens;
 
 import com.tyler.gameObjects.Handler;
-import com.tyler.gameState.GameStateManager;
 import com.tyler.main.Game;
 import com.tyler.userInterface.Button;
 import javafx.application.Platform;
@@ -42,10 +41,10 @@ public class TitleScreen {
 
         // Call Rectangle
         imageView = new ImageView(trumpImage);
-        imageView.setX((game.getScreenWidth() / 2) - 200);
-        imageView.setY(200);
+        imageView.setX((game.getScreenWidth() / 2) - 310);
+        imageView.setY(50);
 
-        backgroundColor = new Rectangle(game.getScreenWidth(), game.getScreenHeight(), Color.RED);
+        backgroundColor = new Rectangle(game.getScreenWidth(), game.getScreenHeight(), Color.rgb(155, 162, 165));
 
         // Call Panes
         titlePane = new StackPane();
