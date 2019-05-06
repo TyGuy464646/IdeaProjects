@@ -7,19 +7,19 @@ import com.tyler.gameState.screens.GameScreen;
 import com.tyler.image.SpriteSheet;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.scene.paint.Color;
 
 public class Player extends GameObject {
 
     // Initialize Classes
     private Handler handler;
-    private SpriteSheet player;
+    private SpriteSheet spriteSheet;
 
     // Initialize Screens
     private GameScreen gameScreen;
 
     // Initialize player
     private Image image = new Image("/Sprites/Trump/TrumpSprite.png");
+    private ImageView player;
 
     // Initialize Player Variables
     public float runRate = .5f;
@@ -31,20 +31,21 @@ public class Player extends GameObject {
     public boolean canJump = true;
 
 
+    // Constructor
     public Player(Handler handler, GameScreen gameScreen, float x, float y, int width, int height, ID id) {
         super(x, y, width, height, id);
         this.handler = handler;
         this.gameScreen = gameScreen;
 
-        player = new SpriteSheet(image);
-        player.grabImage(1, 1, width, height);
+        spriteSheet = new SpriteSheet(image);
+        player = spriteSheet.grabImage(1, 1, width, height);
 
-        gameScreen.addGameSpritePane(player.getImageView());
+        gameScreen.addGameSpritePane(player);
     }
 
     public void tick() {
-        player.getImageView().setX(x);
-        player.getImageView().setY(y);
+        player.setX(x);
+        player.setY(y);
     }
 
     public void inputTick() {

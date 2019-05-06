@@ -7,6 +7,8 @@ import com.tyler.userInterface.Button;
 import javafx.application.Platform;
 import javafx.scene.Node;
 import javafx.scene.Scene;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.StackPane;
 import javafx.scene.paint.Color;
@@ -23,7 +25,9 @@ public class TitleScreen {
 
     // Initialize Buttons
     private Button startButton = new Button("titleScreen", "Start", Button.titleScreenStyle, game.screenWidth / 2 - 100, 100);
-    private Button quitButton = new Button("titleScreen", "Quit", Button.titleScreenStyle, game.screenWidth / 2 - 100, 175);
+    private Button quitButton = new Button("titleScreen", "Quit", Button.titleScreenStyle, game.screenWidth / 2 - 100, 160);
+    private Image trumpImage = new Image("/Sprites/TitleScreen/trump.jpg");
+    private ImageView imageView;
     private Rectangle backgroundColor;
 
     // Initialize Panes
@@ -37,6 +41,10 @@ public class TitleScreen {
         this.handler = handler;
 
         // Call Rectangle
+        imageView = new ImageView(trumpImage);
+        imageView.setX((game.getScreenWidth() / 2) - 200);
+        imageView.setY(200);
+
         backgroundColor = new Rectangle(game.getScreenWidth(), game.getScreenHeight(), Color.RED);
 
         // Call Panes
@@ -61,7 +69,7 @@ public class TitleScreen {
         });
 
         // Add nodes to panes
-        titleBackgroundPane.getChildren().add(backgroundColor);
+        titleBackgroundPane.getChildren().addAll(backgroundColor, imageView);
         titleUserInterfacePane.getChildren().addAll(startButton, quitButton);
     }
 

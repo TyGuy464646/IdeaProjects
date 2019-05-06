@@ -3,8 +3,9 @@ package com.tyler.gameObjects.objects;
 import com.tyler.gameObjects.GameObject;
 import com.tyler.gameObjects.ID;
 import com.tyler.gameState.screens.GameScreen;
-import javafx.scene.paint.Color;
-import javafx.scene.shape.Rectangle;
+import com.tyler.image.SpriteSheet;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 
 public class Block extends GameObject {
 
@@ -16,25 +17,27 @@ public class Block extends GameObject {
 
     // Initialize Screens
     private GameScreen gameScreen;
+    private SpriteSheet spriteSheet;
 
     // Initialize Block
-    private Rectangle block;
-
-    // Initialize Block Variables
-    public Color blockColor = Color.GREY;
+    private Image image = new Image("/Sprites/Tiles/spriteSheet.png");
+    private ImageView dirt;
 
 
+    // Constructor
     public Block(GameScreen gameScreen, float x, float y, int width, int height, ID id) {
         super(x, y, width, height, id);
         this.gameScreen = gameScreen;
 
-        block = new Rectangle(width, height, blockColor);
-        gameScreen.addGameSpritePane(block);
+        spriteSheet = new SpriteSheet(image);
+        dirt = spriteSheet.grabImage(1, 1, width, height);
+
+        gameScreen.addGameSpritePane(dirt);
     }
 
     public void tick() {
-        block.setX(x);
-        block.setY(y);
+        dirt.setX(x);
+        dirt.setY(y);
     }
     public void inputTick () {
 

@@ -7,8 +7,8 @@ import javafx.scene.image.ImageView;
 public class SpriteSheet {
 
     // Variables
-    private int spriteIncrementX = 60;
-    private int spriteIncrementY = 76;
+    private int spriteIncrementX;
+    private int spriteIncrementY;
 
     private final Image image;
     private ImageView imageView;
@@ -22,16 +22,16 @@ public class SpriteSheet {
     }
 
     // Methods
-    public void grabImage(int column, int row, int width, int height) {
+    public ImageView grabImage(int column, int row, int width, int height) {
+        spriteIncrementX = width;
+        spriteIncrementY = height;
+
         imageView.setViewport(new Rectangle2D((column * spriteIncrementX) - spriteIncrementX, (row * spriteIncrementY) - spriteIncrementY, width, height));
+        return imageView;
     }
 
     // Getters
     public Image getImage () {
         return image;
-    }
-
-    public ImageView getImageView () {
-        return imageView;
     }
 }

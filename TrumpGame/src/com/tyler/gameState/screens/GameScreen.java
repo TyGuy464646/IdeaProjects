@@ -4,7 +4,6 @@ import com.tyler.gameObjects.Handler;
 import com.tyler.gameObjects.ID;
 import com.tyler.gameObjects.objects.Block;
 import com.tyler.gameObjects.objects.Player;
-import com.tyler.gameState.GameStateManager;
 import com.tyler.main.Game;
 import com.tyler.userInterface.HealthBar;
 import javafx.scene.Node;

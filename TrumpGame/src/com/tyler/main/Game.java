@@ -2,10 +2,7 @@ package com.tyler.main;
 
 import com.tyler.gameObjects.Handler;
 import com.tyler.gameState.GameStateManager;
-import com.tyler.gameState.screens.GameScreen;
-import com.tyler.gameState.screens.LoadingScreen;
-import com.tyler.gameState.screens.PauseScreen;
-import com.tyler.gameState.screens.TitleScreen;
+import com.tyler.gameState.screens.*;
 import javafx.application.Application;
 import javafx.event.EventHandler;
 import javafx.scene.control.Label;
