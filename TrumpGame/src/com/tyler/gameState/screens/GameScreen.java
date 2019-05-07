@@ -1,5 +1,6 @@
 package com.tyler.gameState.screens;
 
+import com.tyler.gameObjects.GameObject;
 import com.tyler.gameObjects.Handler;
 import com.tyler.gameObjects.ID;
 import com.tyler.gameObjects.objects.Block;
@@ -36,6 +37,8 @@ public class GameScreen {
     public static int blockWidth = 40;
     public static int playerWidth = 60, playerHeight = 76;
 
+    public GameObject player;
+
 
     // Constructor
     public GameScreen (Game game, Handler handler, Textures textures, GameStateManager gsm) {
@@ -68,7 +71,7 @@ public class GameScreen {
             for (int xx = 0; xx < level1.getWidth(); xx++) {
                 switch (pr.getArgb(xx, yy)) {
                     case red:
-                        Block block = new Block(this, textures, xx * blockWidth, yy * blockWidth, blockWidth, blockWidth, ID.Block);
+                        Block block = new Block(game, this, textures, xx * blockWidth, yy * blockWidth, blockWidth, blockWidth, ID.Block);
                         handler.addObject(block);
 
                         if (xx + 1 < level1.getWidth() - 1) {
@@ -93,7 +96,9 @@ public class GameScreen {
                         }
                         break;
                     case blue:
-                        handler.addObject(new Player(handler, this, textures, xx * blockWidth, yy * blockWidth, playerWidth, playerHeight, ID.Player));
+                        player = new Player(game, handler, this, textures, xx * blockWidth, yy * blockWidth, playerWidth, playerHeight, ID.Player);
+                        game.cameraTarget = player;
+                        handler.addObject(player);
                         break;
                 }
             }

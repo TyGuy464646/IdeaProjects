@@ -1,7 +1,7 @@
 package com.tyler.gameState.screens;
 
 import com.tyler.gameObjects.Handler;
-import com.tyler.gameState.GameStateManager;
+import com.tyler.handlers.Textures;
 import com.tyler.main.Game;
 import com.tyler.userInterface.Button;
 import javafx.scene.Node;
@@ -19,10 +19,11 @@ public class PauseScreen {
     // Import Classes
     Game game;
     Handler handler;
+    Textures textures;
 
     // Initialize Buttons
-    Button resumeButton = new Button("pauseScreen", "Resume", Button.pauseScreenStyle, 60, 100);
-    Button exitButton = new Button("pauseScreen", "Exit", Button.pauseScreenStyle, 60, 135);
+    Button resumeButton = new Button("pauseScreen", textures, "Resume", Button.pauseScreenStyle, 60, 100);
+    Button exitButton = new Button("pauseScreen", textures, "Exit", Button.pauseScreenStyle, 60, 135);
 
     // Initialize Nodes
     private Label label;
@@ -34,9 +35,10 @@ public class PauseScreen {
 
 
     // Constructor
-    public PauseScreen (Game game, Handler handler) {
+    public PauseScreen (Game game, Handler handler, Textures textures) {
         this.game = game;
         this.handler = handler;
+        this.textures = textures;
 
         // Call Panes
         pausePane = new StackPane();

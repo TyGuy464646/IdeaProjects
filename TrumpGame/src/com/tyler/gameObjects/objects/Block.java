@@ -2,15 +2,16 @@ package com.tyler.gameObjects.objects;
 
 import com.tyler.gameObjects.GameObject;
 import com.tyler.gameObjects.ID;
-import com.tyler.gameState.GameStateManager;
 import com.tyler.gameState.screens.GameScreen;
 import com.tyler.handlers.Textures;
-import com.tyler.image.SpriteSheet;
+import com.tyler.main.Game;
 import javafx.scene.image.ImageView;
-import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
 
 public class Block extends GameObject {
+
+    // Import Classes
+    Game game;
 
     // Variables
     public boolean disableCollisionUp = false;
@@ -27,16 +28,17 @@ public class Block extends GameObject {
 
 
     // Constructor
-    public Block(GameScreen gameScreen, Textures textures, float x, float y, int width, int height, ID id) {
+    public Block (Game game, GameScreen gameScreen, Textures textures, float x, float y, int width, int height, ID id) {
         super(x, y, width, height, id, textures);
+        this.game = game;
         this.gameScreen = gameScreen;
 
         gameScreen.addGameSpritePane(dirt);
     }
 
     public void tick() {
-        dirt.setX(x);
-        dirt.setY(y);
+        dirt.setX(x - game.camera.x);
+        dirt.setY(y - game.camera.y);
     }
     public void inputTick () {
 

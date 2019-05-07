@@ -29,6 +29,7 @@ public class Handler {
             tempObject.tick();
             tempObject.physicsTick();
         }
+
     }
 
     public void addObject(GameObject tempObject) {

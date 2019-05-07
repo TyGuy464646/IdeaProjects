@@ -1,8 +1,12 @@
 package com.tyler.main;
 
+import com.tyler.gameObjects.GameObject;
 import com.tyler.gameObjects.Handler;
 import com.tyler.gameState.GameStateManager;
-import com.tyler.gameState.screens.*;
+import com.tyler.gameState.screens.GameScreen;
+import com.tyler.gameState.screens.LoadingScreen;
+import com.tyler.gameState.screens.PauseScreen;
+import com.tyler.gameState.screens.TitleScreen;
 import com.tyler.handlers.Textures;
 import javafx.application.Application;
 import javafx.event.EventHandler;
@@ -25,6 +29,7 @@ public class Game extends Application {
     // Import Classes
     private GameTimer timer;
     private Handler handler;
+    public Camera camera;
     public GameStateManager gsm;
     public Textures textures;
 
@@ -33,6 +38,9 @@ public class Game extends Application {
     public GameScreen gameScreen;
     public PauseScreen pauseScreen;
     public LoadingScreen loadingScreen;
+
+    // Camera Lock
+    public GameObject cameraTarget;
 
     // Initialize FPS Label
     public Label fpsLabel;
@@ -45,6 +53,7 @@ public class Game extends Application {
 
         // Call the Classes
         timer = new GameTimer(this);
+        camera = new Camera(this);
         handler = new Handler();
         gsm = new GameStateManager(this, handler);
 
@@ -59,8 +68,8 @@ public class Game extends Application {
         }
 
         // Call Screens
-        titleScreen = new TitleScreen(this, handler);
-        pauseScreen = new PauseScreen(this, handler);
+        titleScreen = new TitleScreen(this, handler, textures);
+        pauseScreen = new PauseScreen(this, handler, textures);
         gameScreen = new GameScreen(this, handler, textures, gsm);
 
         // FPS Label
@@ -129,6 +138,7 @@ public class Game extends Application {
     // Tick Methods
     public void tick () {
         handler.tick();
+        camera.tick(cameraTarget);
     }
 
     public void gsmTick () {

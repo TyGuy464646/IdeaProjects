@@ -5,11 +5,13 @@ import com.tyler.gameObjects.Handler;
 import com.tyler.gameObjects.ID;
 import com.tyler.gameState.screens.GameScreen;
 import com.tyler.handlers.Textures;
+import com.tyler.main.Game;
 import javafx.scene.image.ImageView;
 
 public class Player extends GameObject {
 
     // Initialize Classes
+    private Game game;
     private Handler handler;
 
     // Initialize Screens
@@ -29,8 +31,9 @@ public class Player extends GameObject {
 
 
     // Constructor
-    public Player(Handler handler, GameScreen gameScreen, Textures textures, float x, float y, int width, int height, ID id) {
+    public Player (Game game, Handler handler, GameScreen gameScreen, Textures textures, float x, float y, int width, int height, ID id) {
         super(x, y, width, height, id, textures);
+        this.game = game;
         this.handler = handler;
         this.gameScreen = gameScreen;
 
@@ -38,8 +41,8 @@ public class Player extends GameObject {
     }
 
     public void tick() {
-        player.setX(x);
-        player.setY(y);
+        player.setX(x - game.camera.x);
+        player.setY(y - game.camera.y);
     }
 
     public void inputTick() {

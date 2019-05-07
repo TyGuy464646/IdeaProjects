@@ -1,8 +1,8 @@
 package com.tyler.userInterface;
 
+import com.tyler.handlers.Textures;
 import javafx.event.EventHandler;
 import javafx.scene.control.Label;
-import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseButton;
 import javafx.scene.input.MouseEvent;
@@ -18,30 +18,21 @@ public class Button extends StackPane {
     // Variables
     private String screen;
 
-    // Initiate Images
-    private static Image titleDefaultImage, titleHoverImage, titlePressedImage;
-    private static Image pauseDefaultImage, pauseHoverImage, pausePressedImage;
-    private static boolean initialized = false;
-
     // Variables
     public static String titleScreenStyle = "-fx-text-fill: white; -fx-font-size: 30px;";
     public static String pauseScreenStyle = "-fx-text-fill: white; -fx-font-size: 15px;";
 
 
     // Constructor
-    public Button(String screen, String text, String style, int x, int y) {
+    public Button (String screen, Textures textures, String text, String style, int x, int y) {
         this.screen = screen;
-
-        if (!initialized) {
-            loadImages();
-        }
 
         switch (screen) {
             case "titleScreen":
-                imageView = new ImageView(titleDefaultImage);
+                imageView = new ImageView(textures.titleDefaultImage);
                 break;
             case "pauseScreen":
-                imageView = new ImageView(pauseDefaultImage);
+                imageView = new ImageView(textures.pauseDefaultImage);
                 break;
         }
         setOnMousePressed(new EventHandler<MouseEvent>() {
@@ -50,10 +41,10 @@ public class Button extends StackPane {
                 if (event.getButton() == MouseButton.PRIMARY) {
                     switch (screen) {
                         case "titleScreen":
-                            imageView.setImage(titlePressedImage);
+                            imageView.setImage(textures.titlePressedImage);
                             break;
                         case "pauseScreen":
-                            imageView.setImage(pausePressedImage);
+                            imageView.setImage(textures.pausePressedImage);
                             break;
                     }
 
@@ -69,10 +60,10 @@ public class Button extends StackPane {
                     }
                     switch (screen) {
                         case "titleScreen":
-                            imageView.setImage(titleHoverImage);
+                            imageView.setImage(textures.titleHoverImage);
                             break;
                         case "pauseScreen":
-                            imageView.setImage(pauseHoverImage);
+                            imageView.setImage(textures.pauseHoverImage);
                     }
                 }
             }
@@ -82,10 +73,10 @@ public class Button extends StackPane {
             public void handle (MouseEvent event) {
                 switch (screen) {
                     case "titleScreen":
-                        imageView.setImage(titleHoverImage);
+                        imageView.setImage(textures.titleHoverImage);
                         break;
                     case "pauseScreen":
-                        imageView.setImage(pauseHoverImage);
+                        imageView.setImage(textures.pauseHoverImage);
                         break;
                 }
             }
@@ -95,10 +86,10 @@ public class Button extends StackPane {
             public void handle (MouseEvent event) {
                 switch (screen) {
                     case "titleScreen":
-                        imageView.setImage(titleDefaultImage);
+                        imageView.setImage(textures.titleDefaultImage);
                         break;
                     case "pauseScreen":
-                        imageView.setImage(pauseDefaultImage);
+                        imageView.setImage(textures.pauseDefaultImage);
                         break;
                 }
             }
@@ -110,18 +101,6 @@ public class Button extends StackPane {
         getChildren().addAll(imageView, label);
         setLayoutX(x);
         setLayoutY(y);
-    }
-
-    private static void loadImages() {
-        titleDefaultImage = new Image("/Button/TitleButton/ButtonDefault.png");
-        titleHoverImage = new Image("/Button/TitleButton/ButtonHover.png");
-        titlePressedImage = new Image("/Button/TitleButton/ButtonPressed.png");
-
-        pauseDefaultImage = new Image("Button/PauseButton/ButtonDefault.png");
-        pauseHoverImage = new Image("Button/PauseButton/ButtonHover.png");
-        pausePressedImage = new Image("Button/PauseButton/ButtonPressed.png");
-
-        initialized = true;
     }
 
     // Getters and Setters
