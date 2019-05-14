@@ -31,7 +31,7 @@ public class Player extends GameObject {
 
 
     // Constructor
-    public Player (Game game, Handler handler, GameScreen gameScreen, float x, float y, int width, int height, ID id) {
+    public Player(Game game, Handler handler, GameScreen gameScreen, float x, float y, int width, int height, ID id) {
         super(x, y, width, height, id);
         this.game = game;
         this.handler = handler;

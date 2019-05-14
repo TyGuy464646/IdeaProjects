@@ -57,9 +57,9 @@ public class GameScreen {
         final int green = 0xff00ff00;
         final int blue = 0xff0000ff;
 
+        // Level Image Reader
         Image level1 = new Image("Levels/level1.png");
         PixelReader pr = level1.getPixelReader();
-
         for (int yy = 0; yy < level1.getHeight(); yy++) {
             for (int xx = 0; xx < level1.getWidth(); xx++) {
                 switch (pr.getArgb(xx, yy)) {
