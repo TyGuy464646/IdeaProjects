@@ -72,9 +72,6 @@ public class PauseScreen {
     public void addPauseBackgroundPane(Node node) {
         pauseBackgroundPane.getChildren().add(node);
     }
-    public void addPauseBackgroundPane(Node[] nodes) {
-        pauseBackgroundPane.getChildren().addAll(nodes);
-    }
     public void removePauseBackgroundPane(Node node) {
         pauseBackgroundPane.getChildren().remove(node);
     }
@@ -82,7 +79,6 @@ public class PauseScreen {
     public void addPauseUserInterfacePane(Node node) {
         pauseUserInterfacePane.getChildren().add(node);
     }
-    public void addPauseUserInterfacePane(Node[] nodes) { pauseUserInterfacePane.getChildren().addAll(nodes); }
     public void removePauseUserInterfacePane(Node node) {
         pauseUserInterfacePane.getChildren().remove(node);
     }

@@ -106,9 +106,6 @@ public class GameScreen {
     public void addGameBackgroundPane(Node node) {
         gameBackgroundPane.getChildren().add(node);
     }
-    public void addGameBackgroundPane(Node[] nodes) {
-        gameBackgroundPane.getChildren().addAll(nodes);
-    }
     public void removeGameBackgroundPane(Node node) {
         gameBackgroundPane.getChildren().remove(node);
     }
@@ -116,7 +113,6 @@ public class GameScreen {
     public void addGameSpritePane(Node node) {
         gameSpritePane.getChildren().add(node);
     }
-    public void addGameSpritePane(Node[] nodes) { gameSpritePane.getChildren().addAll(nodes); }
     public void removeGameSpritePane(Node node) {
         gameSpritePane.getChildren().remove(node);
     }
@@ -124,7 +120,6 @@ public class GameScreen {
     public void addGameUserInterfacePane(Node node) {
         gameUserInterfacePane.getChildren().add(node);
     }
-    public void addGameUserInterfacePane(Node[] nodes) { gameUserInterfacePane.getChildren().addAll(nodes); }
     public void removeGameUserInterfacePane(Node node) {
         gameUserInterfacePane.getChildren().remove(node);
     }
