@@ -12,7 +12,6 @@ public abstract class GameObject {
     protected Textures textures;
 
     // Constructor
-    // TODO: Add Sprite Sheet
     public GameObject (float x, float y, int width, int height, ID id, Textures textures) {
         this.x = x;
         this.y = y;

@@ -16,7 +16,7 @@ public class HealthBar extends Pane {
 
     // Variables
     private static int width = 200, height = 32;
-    public int hp = 100;
+    public static int hp = 100;
     private static String healthBarStyle = "-fx-text-fill: black; -fx-font-size: 15px;";
 
 

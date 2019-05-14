@@ -12,12 +12,12 @@ import javafx.scene.shape.Rectangle;
 public class LoadingScreen {
 
     // Import Classes
-    Game game;
-    Handler handler;
-    GameStateManager gsm;
+    private Game game;
+    private Handler handler;
+    private GameStateManager gsm;
 
     // Initialize Scene
-    public Scene loadingScene;
+    private Scene loadingScene;
 
     // Initialize Panes
     private StackPane loadingPane;

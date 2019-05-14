@@ -26,7 +26,9 @@ public class SpriteSheet {
         spriteIncrementX = width;
         spriteIncrementY = height;
         ImageView imageView = new ImageView(image);
-        imageView.setViewport(new Rectangle2D((column * spriteIncrementX) - spriteIncrementX, (row * spriteIncrementY) - spriteIncrementY, width, height));
+        imageView.setViewport(new Rectangle2D((column * spriteIncrementX) - spriteIncrementX,
+                (row * spriteIncrementY) - spriteIncrementY,
+                width, height));
         return imageView;
     }
 

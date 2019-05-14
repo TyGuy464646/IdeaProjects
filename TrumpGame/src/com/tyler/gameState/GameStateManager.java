@@ -33,11 +33,13 @@ public class GameStateManager {
     public void tick () {
         if (playTitleScreen) {
             game.stage.setScene(game.titleScreen.setScene());
+            game.paused = true;
         } else if (playGameScreen) {
             game.stage.setScene(game.gameScreen.setScene());
         } else if (playLoadingScreen) {
             game.pauseScreen.getPausePane().setVisible(false);
             game.stage.setScene(game.loadingScreen.setScene());
+            game.paused = true;
         }
 
         if (playGameScreen) {

@@ -24,7 +24,7 @@ public class Game extends Application {
     public static int screenWidth = 800;
 
     // Initialize Paused
-    public static boolean paused = true;
+    public boolean paused = true;
 
     // Import Classes
     private GameTimer timer;
@@ -130,7 +130,7 @@ public class Game extends Application {
         });
 
         // Show the Stage
-        stage.setTitle("Trump Game");
+        stage.setTitle("Trump's Revenge");
         stage.setResizable(false);
         stage.show();
     }

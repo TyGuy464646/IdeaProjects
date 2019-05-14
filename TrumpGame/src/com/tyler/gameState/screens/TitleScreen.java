@@ -17,9 +17,9 @@ import javafx.scene.shape.Rectangle;
 public class TitleScreen {
 
     // Import Classes
-    Game game;
-    Handler handler;
-    Textures textures;
+    private Game game;
+    private Handler handler;
+    private Textures textures;
 
     // Initialize Scene
     public Scene titleScene;
@@ -33,7 +33,8 @@ public class TitleScreen {
 
     // Initialize Panes
     private StackPane titlePane;
-    private Pane titleBackgroundPane, titleUserInterfacePane;
+    private Pane titleBackgroundPane;
+    private Pane titleUserInterfacePane;
 
 
     // Constructor
@@ -66,9 +67,7 @@ public class TitleScreen {
             game.gsm.setPlayTitleScreen(false);
             game.gsm.setPlayGameScreen(true);
         });
-        quitButton.setAction(() -> {
-            Platform.exit();
-        });
+        quitButton.setAction(Platform :: exit);
 
         // Add nodes to panes
         titleBackgroundPane.getChildren().addAll(backgroundColor, imageView);
