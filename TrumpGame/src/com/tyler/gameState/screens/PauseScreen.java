@@ -1,6 +1,7 @@
 package com.tyler.gameState.screens;
 
 import com.tyler.gameObjects.Handler;
+import com.tyler.gameState.GameStateManager;
 import com.tyler.main.Game;
 import com.tyler.userInterface.Button;
 import javafx.scene.Node;
@@ -12,12 +13,12 @@ import javafx.scene.shape.Rectangle;
 
 public class PauseScreen {
 
-    // Variables
-    private Color backgroundColor = Color.rgb(60, 60, 60, 0.9);
-
     // Import Classes
     private Game game;
     private Handler handler;
+
+    // Variables
+    private Color backgroundColor = Color.rgb(60, 60, 60, 0.9);
 
     // Initialize Buttons
     private Button resumeButton = new Button("pauseScreen", "Resume", Button.pauseScreenStyle, 60, 100);
@@ -55,8 +56,8 @@ public class PauseScreen {
         resumeButton.setAction(() -> Game.paused = false);
         exitButton.setAction(() -> {
             Game.paused = true;
-            game.gsm.setPlayGameScreen(false);
-            game.gsm.setPlayTitleScreen(true);
+            GameStateManager.playGameScreen = false;
+            GameStateManager.playTitleScreen = true;
         });
         pauseUserInterfacePane.getChildren().addAll(resumeButton, exitButton);
 

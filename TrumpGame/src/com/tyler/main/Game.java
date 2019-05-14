@@ -28,7 +28,7 @@ public class Game extends Application {
     // Import Classes
     private Handler handler;
     public Camera camera;
-    public GameStateManager gsm;
+    private GameStateManager gsm;
     private Textures textures;
 
     // Initialize Screens
@@ -56,12 +56,12 @@ public class Game extends Application {
         camera = new Camera(this);
 
         // Load Textures
-        loadingScreen = new LoadingScreen(this, handler, gsm);
+        loadingScreen = new LoadingScreen(this, handler);
         if (LoadingScreen.isLoading) {
-            gsm.setPlayLoadingScreen(true);
+            GameStateManager.playLoadingScreen = true;
             textures = new Textures();
-            gsm.setPlayLoadingScreen(false);
-            gsm.setPlayTitleScreen(true);
+            GameStateManager.playLoadingScreen = false;
+            GameStateManager.playTitleScreen = true;
             LoadingScreen.isLoading = false;
         }
 

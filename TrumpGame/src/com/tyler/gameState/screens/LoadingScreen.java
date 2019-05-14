@@ -1,7 +1,6 @@
 package com.tyler.gameState.screens;
 
 import com.tyler.gameObjects.Handler;
-import com.tyler.gameState.GameStateManager;
 import com.tyler.main.Game;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
@@ -14,7 +13,6 @@ public class LoadingScreen {
     // Import Classes
     private Game game;
     private Handler handler;
-    private GameStateManager gsm;
 
     // Initialize Scene
     private Scene loadingScene;
@@ -31,10 +29,9 @@ public class LoadingScreen {
 
 
     // Constructor
-    public LoadingScreen(Game game, Handler handler, GameStateManager gsm) {
+    public LoadingScreen (Game game, Handler handler) {
         this.game = game;
         this.handler = handler;
-        this.gsm = gsm;
 
         // Call Panes
         loadingPane = new StackPane();

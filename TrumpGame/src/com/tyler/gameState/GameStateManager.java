@@ -12,7 +12,7 @@ public class GameStateManager {
     // Initialize Scene Booleans
     public static boolean playTitleScreen;
     public static boolean playGameScreen;
-    private static boolean playLoadingScreen;
+    public static boolean playLoadingScreen;
 
     // Variables
     private boolean isPressed = false;
@@ -57,17 +57,5 @@ public class GameStateManager {
             game.pauseScreen.getPausePane().setVisible(false);
             game.fpsLabel.setVisible(true);
         }
-    }
-
-    public void setPlayTitleScreen (boolean x) {
-        playTitleScreen = x;
-    }
-
-    public void setPlayGameScreen (boolean x) {
-        playGameScreen = x;
-    }
-
-    public void setPlayLoadingScreen (boolean x) {
-        playLoadingScreen = x;
     }
 }
