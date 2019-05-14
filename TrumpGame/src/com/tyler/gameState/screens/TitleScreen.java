@@ -1,7 +1,7 @@
 package com.tyler.gameState.screens;
 
 import com.tyler.gameObjects.Handler;
-import com.tyler.handlers.Textures;
+import com.tyler.gameState.GameStateManager;
 import com.tyler.main.Game;
 import com.tyler.userInterface.Button;
 import javafx.application.Platform;
@@ -17,16 +17,14 @@ import javafx.scene.shape.Rectangle;
 public class TitleScreen {
 
     // Import Classes
-    private Game game;
     private Handler handler;
-    private Textures textures;
 
     // Initialize Scene
-    public Scene titleScene;
+    private Scene titleScene;
 
     // Initialize Buttons
-    private Button startButton = new Button("titleScreen", textures, "Start", Button.titleScreenStyle, game.screenWidth / 2 - 100, 100);
-    private Button quitButton = new Button("titleScreen", textures, "Quit", Button.titleScreenStyle, game.screenWidth / 2 - 100, 160);
+    private Button startButton = new Button("titleScreen", "Start", Button.titleScreenStyle, Game.screenWidth / 2 - 100, 100);
+    private Button quitButton = new Button("titleScreen", "Quit", Button.titleScreenStyle, Game.screenWidth / 2 - 100, 160);
     private Image trumpImage = new Image("/Sprites/TitleScreen/trump.jpg");
     private ImageView imageView;
     private Rectangle backgroundColor;
@@ -38,17 +36,15 @@ public class TitleScreen {
 
 
     // Constructor
-    public TitleScreen (Game game, Handler handler, Textures textures) {
-        this.game = game;
+    public TitleScreen (Handler handler) {
         this.handler = handler;
-        this.textures = textures;
 
         // Call Rectangle
         imageView = new ImageView(trumpImage);
-        imageView.setX((game.getScreenWidth() / 2) - 310);
+        imageView.setX((Game.screenWidth / 2) - 310);
         imageView.setY(50);
 
-        backgroundColor = new Rectangle(game.getScreenWidth(), game.getScreenHeight(), Color.rgb(155, 162, 165));
+        backgroundColor = new Rectangle(Game.screenWidth, Game.screenHeight, Color.rgb(155, 162, 165));
 
         // Call Panes
         titlePane = new StackPane();
@@ -59,13 +55,13 @@ public class TitleScreen {
         titlePane.getChildren().addAll(titleBackgroundPane, titleUserInterfacePane);
 
         // Call Scene
-        titleScene = new Scene(titlePane, game.getScreenWidth(), game.getScreenHeight(), Color.RED);
+        titleScene = new Scene(titlePane, Game.screenWidth, Game.screenHeight, Color.RED);
 
         // Add Buttons
         startButton.setAction(() -> {
-            game.paused = false;
-            game.gsm.setPlayTitleScreen(false);
-            game.gsm.setPlayGameScreen(true);
+            Game.paused = false;
+            GameStateManager.playTitleScreen = false;
+            GameStateManager.playGameScreen = true;
         });
         quitButton.setAction(Platform :: exit);
 

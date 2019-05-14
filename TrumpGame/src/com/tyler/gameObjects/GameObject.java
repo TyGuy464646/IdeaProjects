@@ -1,24 +1,20 @@
 package com.tyler.gameObjects;
 
-import com.tyler.handlers.Textures;
-
 public abstract class GameObject {
 
     // Variables
     protected float x, y;
     protected int width, height;
     protected double velX, velY;
-    protected ID id;
-    protected Textures textures;
+    private ID id;
 
     // Constructor
-    public GameObject (float x, float y, int width, int height, ID id, Textures textures) {
+    public GameObject (float x, float y, int width, int height, ID id) {
         this.x = x;
         this.y = y;
         this.width = width;
         this.height = height;
         this.id = id;
-        this.textures = textures;
     }
 
     // Methods
@@ -66,12 +62,5 @@ public abstract class GameObject {
     }
     public void setId (ID id) {
         this.id = id;
-    }
-
-    public Textures getTextures () {
-        return textures;
-    }
-    public void setTextures (Textures textures) {
-        this.textures = textures;
     }
 }

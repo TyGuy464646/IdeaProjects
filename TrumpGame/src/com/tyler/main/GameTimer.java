@@ -24,7 +24,7 @@ public class GameTimer extends AnimationTimer {
     public void handle (long now) {
         // check for target framerate
         if (now - lastFrameNanoTime > targetFrameTime) {
-            if (!game.paused) {
+            if (!Game.paused) {
                 game.tick();
             }
             game.gsmTick();

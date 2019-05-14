@@ -10,19 +10,19 @@ public class Camera {
     // Variables
     public float x = 0,
             y = 0;
-    public double vX = 0,
+    private double vX = 0,
             vY = 0;
-    public double speedX = 2;
-    public double speedY = 1;
+    private double speedX = 2;
+    private double speedY = 1;
 
 
     // Constructor
-    public Camera (Game game) {
+    Camera (Game game) {
         this.game = game;
     }
 
     // Methods
-    public void tick (GameObject object) {
+    void tick (GameObject object) {
         double targetX = object.getX() - (game.getScreenWidth() / 2.0);
         double targetY = object.getY() - (game.getScreenHeight() / 2.0);
         double distance = Math.sqrt(((targetX - x) * (targetX - x)) + ((targetY - y) * (targetY - y)));

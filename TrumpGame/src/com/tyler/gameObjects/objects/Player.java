@@ -18,21 +18,21 @@ public class Player extends GameObject {
     private GameScreen gameScreen;
 
     // Initialize Player
-    private ImageView player = textures.playerSprite.grabImage(1, 1, width, height);
+    private ImageView player = Textures.playerSprite.grabImage(1, 1, width, height);
 
     // Initialize Player Variables
-    public float runRate = .5f;
-    public final float maxRunSpeed = 5f;
+    private float runRate = .5f;
+    private final float maxRunSpeed = 5f;
     private float accelX = 0, accelY = 0;
     private static float gravity = 0.5f;
     private float stoppingThreshold = 0.05f;
-    public float drag = 0.2f;
-    public boolean canJump = true;
+    private float drag = 0.2f;
+    private boolean canJump = true;
 
 
     // Constructor
-    public Player (Game game, Handler handler, GameScreen gameScreen, Textures textures, float x, float y, int width, int height, ID id) {
-        super(x, y, width, height, id, textures);
+    public Player (Game game, Handler handler, GameScreen gameScreen, float x, float y, int width, int height, ID id) {
+        super(x, y, width, height, id);
         this.game = game;
         this.handler = handler;
         this.gameScreen = gameScreen;

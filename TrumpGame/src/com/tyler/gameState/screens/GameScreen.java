@@ -5,7 +5,6 @@ import com.tyler.gameObjects.Handler;
 import com.tyler.gameObjects.ID;
 import com.tyler.gameObjects.objects.Block;
 import com.tyler.gameObjects.objects.Player;
-import com.tyler.gameState.GameStateManager;
 import com.tyler.handlers.Textures;
 import com.tyler.main.Game;
 import com.tyler.userInterface.HealthBar;
@@ -19,32 +18,26 @@ import javafx.scene.paint.Color;
 
 public class GameScreen {
 
-    // Import Classes
-    Game game;
-    Handler handler;
-    GameStateManager gsm;
+    // Initialize Objects
+    private GameObject player;
 
-    HealthBar healthBar = new HealthBar(5, 5);
+    // Health Bar
+    private HealthBar healthBar = new HealthBar(5, 5);
 
     // Initialize Scene
-    public Scene gameScene;
+    private Scene gameScene;
 
     // Initialize Panes
     private StackPane gamePane, rootPane;
     private Pane gameBackgroundPane, gameSpritePane, gameUserInterfacePane;
 
     // Variables
-    public static int blockWidth = 40;
-    public static int playerWidth = 60, playerHeight = 76;
-
-    public GameObject player;
+    private static int blockWidth = 40, blockHeight = 40;
+    private static int playerWidth = 60, playerHeight = 76;
 
 
     // Constructor
-    public GameScreen (Game game, Handler handler, Textures textures, GameStateManager gsm) {
-        this.game = game;
-        this.handler = handler;
-        this.gsm = gsm;
+    public GameScreen (Game game, Handler handler, Textures textures) {
 
         // Call Panes
         gamePane = new StackPane();
@@ -71,9 +64,10 @@ public class GameScreen {
             for (int xx = 0; xx < level1.getWidth(); xx++) {
                 switch (pr.getArgb(xx, yy)) {
                     case red:
-                        Block block = new Block(game, this, textures, xx * blockWidth, yy * blockWidth, blockWidth, blockWidth, ID.Block);
+                        Block block = new Block(game, this, xx * blockWidth, yy * blockWidth, blockWidth, blockHeight, ID.Block);
                         handler.addObject(block);
 
+                        // Disable collision
                         if (xx + 1 < level1.getWidth() - 1) {
                             if (pr.getArgb(xx + 1, yy) == red) {
                                 block.disableCollisionRight = true;
@@ -96,13 +90,14 @@ public class GameScreen {
                         }
                         break;
                     case blue:
-                        player = new Player(game, handler, this, textures, xx * blockWidth, yy * blockWidth, playerWidth, playerHeight, ID.Player);
+                        player = new Player(game, handler, this, xx * blockWidth, yy * blockWidth, playerWidth, playerHeight, ID.Player);
                         game.cameraTarget = player;
                         handler.addObject(player);
                         break;
                 }
             }
         }
+
         gameUserInterfacePane.getChildren().add(healthBar);
 
     }

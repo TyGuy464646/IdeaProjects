@@ -10,7 +10,7 @@ public class Textures {
     public static Image pauseDefaultImage, pauseHoverImage, pausePressedImage;
 
     // Title Screen Image
-    public static Image titleBackgroundImage;
+    private static Image titleBackgroundImage;
 
     // Player Sprite
     public static SpriteSheet playerSprite;
