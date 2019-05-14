@@ -128,12 +128,12 @@ public class Game extends Application {
     }
 
     // Tick Methods
-    void tick () {
+    public void tick () {
         handler.tick();
         camera.tick(cameraTarget);
     }
 
-    void gsmTick () {
+    public void gsmTick () {
         gsm.tick();
     }
 
