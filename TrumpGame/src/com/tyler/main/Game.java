@@ -45,7 +45,7 @@ public class Game extends Application {
 
 
     @Override
-    public void start (Stage stage) {
+    public void start(Stage stage) {
         // Universal Stage
         this.stage = stage;
 
@@ -128,21 +128,21 @@ public class Game extends Application {
     }
 
     // Tick Methods
-    public void tick () {
+    public void tick() {
         handler.tick();
         camera.tick(cameraTarget);
     }
 
-    public void gsmTick () {
+    public void gsmTick() {
         gsm.tick();
     }
 
     // Getters
-    public int getScreenHeight () {
+    public int getScreenHeight() {
         return screenHeight;
     }
 
-    public int getScreenWidth () {
+    public int getScreenWidth() {
         return screenWidth;
     }
 }
