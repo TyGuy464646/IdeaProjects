@@ -35,7 +35,6 @@ public class GameStateManager {
         } else if (playGameScreen) {
             game.stage.setScene(game.gameScreen.setScene());
         } else if (playLoadingScreen) {
-            game.pauseScreen.getPausePane().setVisible(false);
             game.stage.setScene(game.loadingScreen.setScene());
             Game.paused = true;
         }
