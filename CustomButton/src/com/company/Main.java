@@ -4,20 +4,17 @@ import javafx.application.Application;
 import javafx.application.Platform;
 import javafx.event.EventHandler;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseButton;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.*;
 import javafx.stage.Stage;
-
 import java.util.Timer;
 import java.util.TimerTask;
 
 public class Main extends Application {
     Image defaultImage, hoverImage, pressedImage;
-
 
     @Override
     public void start(Stage stage) throws Exception {
@@ -31,6 +28,10 @@ public class Main extends Application {
 
         ImageView b = new ImageView();
         b.setImage(defaultImage);
+<<<<<<< HEAD
+=======
+//      b.setRotate(45);
+>>>>>>> 5435b6843a10e90c6628b4802fa295fa4e95ef3c
         b.setOnMouseClicked(new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent e) {
@@ -44,14 +45,14 @@ public class Main extends Application {
                             Platform.runLater(new Runnable() {
                                 @Override
                                 public void run() {
-                                    b.setImage(defaultImage);
+                                    b.setImage(hoverImage);
                                 }
                             });
                             t.cancel();
                             t.purge();
                         }
                     };
-                    t.schedule(revert, 200);
+                    t.schedule(revert, 100);
                 }
             }
         });
