@@ -31,7 +31,6 @@ public class Main extends Application {
 
         ImageView b = new ImageView();
         b.setImage(defaultImage);
-        b.setRotate(45);
         b.setOnMouseClicked(new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent e) {
