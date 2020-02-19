@@ -1,9 +1,9 @@
 package com.tyler.main;
 
-import java.awt.*;
-import java.awt.event.*;
-
 import javax.swing.*;
+import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 
 public class NonogramGUI implements ActionListener {
@@ -20,8 +20,8 @@ public class NonogramGUI implements ActionListener {
 
         JButton resetButton = new JButton("Reset");
         resetButton.addActionListener(this);
-        p.add(resetButton,BorderLayout.WEST);
-        p.add(panel,BorderLayout.CENTER);
+        p.add(resetButton, BorderLayout.WEST);
+        p.add(panel, BorderLayout.CENTER);
         f.pack();
         f.setVisible(true);
     }
@@ -33,7 +33,7 @@ public class NonogramGUI implements ActionListener {
         panel.repaint();
     }
 
-    public static void main (String[] args) {
+    public static void main(String[] args) {
         String pic = "..XXX..\n.XX.XX.\nXX...XX\nX.....X\nXX...XX\n.XX.XX.\n..XXX..";
         Nonogram nono = new Nonogram(pic);
         NonogramGUI inst = new NonogramGUI(nono);
