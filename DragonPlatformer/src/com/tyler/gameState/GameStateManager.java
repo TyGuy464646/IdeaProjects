@@ -1,5 +1,6 @@
 package com.tyler.gameState;
 
+import com.tyler.gameState.states.Level1State;
 import com.tyler.gameState.states.MenuState;
 
 import java.util.ArrayList;
@@ -20,6 +21,7 @@ public class GameStateManager {
 
         currentState = MENUSTATE;
         gameStates.add(new MenuState(this));
+        gameStates.add(new Level1State(this));
     }
 
 
